@@ -1,0 +1,83 @@
+.modal-overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgb(0, 0, 0);
+  background: rgba(0, 0, 0, 0.9);
+  top: 0;
+  left: 0;
+  z-index: -1;
+  /* visibility: hidden; */
+  display: none;
+  overflow: hidden;
+}
+
+.show-modal {
+  display: block;
+  /* visibility: visible; */
+  z-index: 10;
+}
+
+.modal-container figure {
+  position: absolute;
+  top: 80px;
+  left: 0;
+  width: 100%;
+  height: 90%;
+  opacity: 0;
+  transition: all 0.8s ease-out;
+  display: flex;
+  justify-content: center;
+  min-width: 320px;
+}
+
+figure.current-image {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+figure.last-image {
+  transform: translateX(-100%);
+}
+
+figure.next-image {
+  transform: translateX(100%);
+}
+
+.gal-modal-img {
+  padding-top: 35px;
+  width: 85vw;
+  height: 42vw;
+  object-position: top;
+  object-fit: cover;
+  max-width: 1200px;
+  /* max-height: 80vh; */
+}
+
+.modal-btns {
+  position: fixed;
+  top: 85px;
+  right: 5vw;
+  width: 200px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.modal-btns button {
+  padding: 0 10px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+  background: rgba(238, 235, 235, 0.2);
+  color: white;
+  border: none;
+  box-shadow: 0 5px 15px rgba(238, 235, 235, 0.2);
+  display: flex;
+  place-items: center;
+}
+@media (max-width: 1080px) {
+  .gal-modal-img {
+    width: 95vw;
+    height: 50vw;
+    min-height: 320px;
+  }
+}

@@ -1,0 +1,14 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 60%;
+  height: 80%;
+  max-width: 800px;
+  padding: 50px;
+  border: 1px solid black;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+  background: var(--backgroundColor);
+}
