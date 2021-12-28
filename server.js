@@ -19,16 +19,13 @@ app.use('/api/reviews', reviews)
 app.use('/api/animals', animals)
 app.use('/api/auth', auth)
 
-// Serve static assets if in production
-if (process.env.NODE_ENV === 'production') {
-  // Set static folder
-  app.use(express.static('client/build'))
+// Serve static assets
+app.use(express.static('client/build'))
 
-  // Any request we get except the above route, will load the front-end
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-  })
-}
+// Any request we get except the above route, will load the front-end
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+})
 
 async function start() {
   try {
