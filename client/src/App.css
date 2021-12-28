@@ -21,6 +21,9 @@ body {
 }
 
 .home,
+.animals {
+  min-width: 320px;
+}
 .services,
 .products,
 .login,
@@ -36,6 +39,7 @@ body {
   height: 90vh;
   align-items: center;
   justify-content: center;
+  min-width: 320px;
 }
 
 .services,

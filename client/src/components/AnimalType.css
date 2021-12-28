@@ -127,6 +127,7 @@
   .animal-img-container {
     width: 100%;
     height: 45vw;
+    min-height: 200px;
   }
   .animal-info {
     width: 100%;

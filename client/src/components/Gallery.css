@@ -37,6 +37,8 @@
   object-position: top;
   object-fit: cover;
   height: 20vh;
+  /* add min height to better fit landscape */
+  min-height: 300px;
   /* remove the extra space at the bottom */
   display: block;
 }
