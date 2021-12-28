@@ -12,7 +12,6 @@ const GalleryModal = () => {
   } = useGlobalContext()
   const [isPlay, setIsPlay] = useState(true)
   const [index, setIndex] = useState(modalIndex)
-  console.log(modalIndex)
 
   // Update the index to loop through images
   useEffect(() => {
