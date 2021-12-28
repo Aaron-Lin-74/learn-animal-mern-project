@@ -62,7 +62,7 @@ article h4 {
 .prev,
 .next {
   position: absolute;
-  top: 200px;
+  top: 150px;
   /* transform: translateY(-50%); */
   background: rgb(240, 130, 58);
   color: #fff;

@@ -2,11 +2,14 @@ import React from 'react'
 import './Gallery.css'
 import { HiPlus } from 'react-icons/hi'
 import GalleryModal from './GalleryModal'
-import { useHomeContext } from './contexts/HomeContext'
+import { useGlobalContext } from '../contexts/AppContext'
 
 const Gallery = () => {
-  const { isModalOpen, openModal } = useHomeContext()
-  const images = ['quokka', 'panda', 'koala', 'red_panda']
+  const {
+    isModalOpen,
+    openModal,
+    galleryImageNames: images,
+  } = useGlobalContext()
   return (
     <section className='gallery'>
       <div className='ani-info'>
@@ -23,18 +26,22 @@ const Gallery = () => {
                 className='gal-flex-item'
                 onClick={() => openModal(ind)}
               >
-                <a>
-                  <img className='gal-img' src={`/images/${image}.jpg`}></img>
+                <figure>
+                  <img
+                    className='gal-img'
+                    src={`/images/${image}.jpg`}
+                    alt='gallery'
+                  ></img>
                   <span className='gal-add'>
                     <HiPlus />
                   </span>
-                </a>
+                </figure>
               </div>
             )
           })}
         </div>
       </div>
-      {isModalOpen && <GalleryModal images={images} />}
+      {isModalOpen && <GalleryModal />}
     </section>
   )
 }

@@ -1,35 +1,38 @@
 import React, { useState, useEffect } from 'react'
-import { useGlobalContext } from './contexts/AppContext'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi'
 import { FaQuoteRight } from 'react-icons/fa'
+import useFetch from '../hooks/useFetch'
 import './Reviews.css'
 
 const Reviews = () => {
-  const [reviews, setReviews] = useState(null)
+  // const [reviews, setReviews] = useState(null)
+  // const [isLoaded, setIsLoaded] = useState(false)
+
+  // // Fetch the reviews from the server
+  // const fetchReivews = async () => {
+  //   try {
+  //     const response = await fetch(`/api/reviews`)
+  //     if (!response.ok) {
+  //       throw new Error('Network response was not OK')
+  //     }
+  //     const data = await response.json()
+  //     setReviews(data.reviews)
+  //     setIsLoaded(true)
+  //   } catch (err) {
+  //     console.log(err)
+  //   }
+  // }
+  // // Call fetch reviews when mounted
+  // useEffect(() => {
+  //   fetchReivews()
+  // }, [])
+
+  // Use custom hook to replace the fetch reviews, to reuse the functionality
+  const {
+    data: { reviews },
+    isLoaded,
+  } = useFetch('/api/reviews')
   const [index, setIndex] = useState(0)
-  const [isLoaded, setIsLoaded] = useState(false)
-  const { serverUrl } = useGlobalContext()
-
-  // Fetch the reviews from the server
-  const fetchReivews = async () => {
-    try {
-      const response = await fetch('/api/reviews')
-      console.log(response)
-      if (!response.ok) {
-        throw new Error('Network response was not OK')
-      }
-      const data = await response.json()
-      setReviews(data.reviews)
-      setIsLoaded(true)
-    } catch (err) {
-      console.log(err)
-    }
-  }
-  // Call fetch reviews when mounted
-  useEffect(() => {
-    fetchReivews()
-  }, [])
-
   useEffect(() => {
     if (isLoaded) {
       const lastIndex = reviews.length - 1
@@ -41,7 +44,7 @@ const Reviews = () => {
         setIndex(0)
       }
     }
-  }, [index, reviews])
+  }, [index, reviews, isLoaded])
 
   // Let the reivews keep rolling
   useEffect(() => {

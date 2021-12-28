@@ -3,8 +3,8 @@ import './Navbar.css'
 import { Link } from 'react-router-dom'
 import { FaTimes, FaBars } from 'react-icons/fa'
 import { GiTigerHead } from 'react-icons/gi'
-import { useGlobalContext } from './contexts/AppContext'
-import { useAuth } from './contexts/AuthContext'
+import { useGlobalContext } from '../contexts/AppContext'
+import { useAuth } from '../contexts/AuthContext'
 
 function Navbar() {
   const {
@@ -49,14 +49,13 @@ function Navbar() {
             </Link>
           </li>
           <li className='nav-item'>
-            <a
+            <span
               className='nav-links'
-              onClick={closeMobileMenu}
-              onClick={toggleSubmenu}
+              onClick={(closeMobileMenu, toggleSubmenu)}
               onMouseOver={displaySubmenu}
             >
               Animals
-            </a>
+            </span>
           </li>
           <li className='nav-item'>
             <Link
@@ -80,9 +79,9 @@ function Navbar() {
           )}
           {currentUser ? (
             <li>
-              <a className='nav-links-sign-up' onClick={logout}>
+              <span className='nav-links-sign-up' onClick={logout}>
                 Log out
-              </a>
+              </span>
             </li>
           ) : (
             <li>

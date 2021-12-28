@@ -1,6 +1,5 @@
 import React from 'react'
-import { useAuth } from './contexts/AuthContext'
-import { Link } from 'react-router-dom'
+import { useAuth } from '../contexts/AuthContext'
 import './Profile.css'
 import Button from './Button'
 

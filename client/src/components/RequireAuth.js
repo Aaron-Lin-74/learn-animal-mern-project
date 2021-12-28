@@ -1,5 +1,5 @@
 import { Navigate, useLocation } from 'react-router-dom'
-import { useAuth } from './contexts/AuthContext.js'
+import { useAuth } from '../contexts/AuthContext.js'
 
 function RequireAuth({ children }) {
   const { currentUser } = useAuth()

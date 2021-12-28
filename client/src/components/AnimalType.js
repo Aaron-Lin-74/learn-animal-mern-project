@@ -1,12 +1,14 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
-import { useGlobalContext } from './contexts/AppContext'
-import { useAuth } from './contexts/AuthContext'
+import { useGlobalContext } from '../contexts/AppContext'
+import { useAuth } from '../contexts/AuthContext'
 import AnimalCard from './AnimalCard'
+import useFetch from '../hooks/useFetch'
 import './AnimalType.css'
 
 const AnimalType = () => {
   const { animalType } = useParams()
+  const type = animalType.endsWith('s') ? animalType.slice(0, -1) : animalType
   const allTypes = [
     'mammal',
     'fish',
@@ -23,30 +25,37 @@ const AnimalType = () => {
   const [limit, setLimit] = useState(3)
 
   // The url of the backend server, defined in the AppContext
-  const { animals, loadAnimals, scrollTop } = useGlobalContext()
+  const { scrollTop } = useGlobalContext()
   const loadMoreRef = useRef()
 
-  useEffect(() => {
-    // If user types the wrong route instead of using menu, navigate to 404
-    if (!allTypes.includes(animalType)) {
-      navigate('/error', { replace: true })
-    }
-
-    // Only Mammal and Bird are public, the rest types need log in
-    if (!currentUser && animalType !== 'mammal' && animalType !== 'bird') {
-      navigate('/login', { replace: true, path: location.pathname })
-    }
-  })
+  // Store the url as a state, update url when the type or limit changed
+  const [url, setUrl] = useState(`/api/animals/${type}?limit=${limit}`)
+  const [withToken, setWithToken] = useState(false)
+  const { data: animals } = useFetch(url, withToken)
 
   // Every time the animal type changes, scroll to the top
   useEffect(() => {
     scrollTop()
-  }, [animalType])
+    // If user types the wrong route instead of using menu, navigate to 404
+    if (!allTypes.includes(type)) {
+      navigate('/error', { replace: true })
+      return
+    }
+    // Only Mammal and Bird are public, the rest types need log in
+    if (!currentUser && type !== 'mammal' && type !== 'bird') {
+      navigate('/login', { replace: true, path: location.pathname })
+      return
+    }
+    // If user has loged in, access private route with token
+    if (currentUser && type !== 'mammal' && type !== 'bird') {
+      setWithToken(true)
+    }
+  }, [type, currentUser, scrollTop])
 
   // Specify the type of the animal and number of animals to fetch
   useEffect(() => {
-    loadAnimals(animalType, limit)
-  }, [animalType, limit])
+    setUrl(`/api/animals/${type}?limit=${limit}`)
+  }, [type, limit])
 
   // Load extra 3 records from the server when click load more
   const loadMore = () => {

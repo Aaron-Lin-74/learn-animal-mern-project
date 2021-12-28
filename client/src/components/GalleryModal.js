@@ -2,13 +2,19 @@ import React, { useState, useEffect } from 'react'
 import './GalleryModal.css'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi'
 import { FaTimes, FaPauseCircle, FaPlayCircle } from 'react-icons/fa'
-import { useHomeContext } from './contexts/HomeContext'
+import { useGlobalContext } from '../contexts/AppContext'
 
-const GalleryModal = ({ images }) => {
-  const { closeModal, index, setIndex } = useHomeContext()
+const GalleryModal = () => {
+  const {
+    closeModal,
+    galleryImageNames: images,
+    modalIndex,
+  } = useGlobalContext()
   const [isPlay, setIsPlay] = useState(true)
+  const [index, setIndex] = useState(modalIndex)
+  console.log(modalIndex)
 
-  // Update the index to loop the index
+  // Update the index to loop through images
   useEffect(() => {
     if (index < 0) {
       setIndex(images.length - 1)
@@ -53,8 +59,12 @@ const GalleryModal = ({ images }) => {
             imgClass = 'last-image'
           }
           return (
-            <figure className={imgClass}>
-              <img className='gal-modal-img' src={`/images/${image}.jpg`}></img>
+            <figure className={imgClass} key={image}>
+              <img
+                className='gal-modal-img'
+                src={`/images/${image}.jpg`}
+                alt='modal'
+              ></img>
             </figure>
           )
         })}
