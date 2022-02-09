@@ -1,41 +1,20 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
-import { ImArrowUp } from 'react-icons/im'
 import { useGlobalContext } from '../contexts/AppContext'
+import { useParams } from 'react-router-dom'
 
 const Animals = () => {
-  const scrollTopRef = useRef()
-
-  const { scrollTop } = useGlobalContext()
-
-  // Add onscroll event listener determining to show the button or not
+  // Reset the search bar to empty when routes to other animal type
+  const { setSearchTerm } = useGlobalContext()
+  const { animalType } = useParams()
   useEffect(() => {
-    scrollTop()
-    window.addEventListener('scroll', showScrollBtn)
-
-    // Always use a cleanup function to avoid the memery leak and overwritten issue
-    return () => window.removeEventListener('scroll', showScrollBtn)
-  }, [scrollTop, scrollTopRef])
-
-  // When the user scrolls down 20px from the top of the document, show the button
-  const showScrollBtn = () => {
-    if (
-      document.body.scrollTop > 20 ||
-      document.documentElement.scrollTop > 20
-    ) {
-      scrollTopRef.current.style.display = 'block'
-    } else {
-      scrollTopRef.current.style.display = 'none'
-    }
-  }
+    setSearchTerm('')
+  }, [animalType, setSearchTerm])
 
   return (
-    <div className='animals'>
+    <main className='animals'>
       <Outlet />
-      <button className='scroll-top' ref={scrollTopRef} onClick={scrollTop}>
-        <ImArrowUp />
-      </button>
-    </div>
+    </main>
   )
 }
 

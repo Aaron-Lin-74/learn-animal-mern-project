@@ -1,13 +1,14 @@
 import React, { useRef, useState } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
+import Button from './Button'
 
 const LoginForm = () => {
   const emailRef = useRef()
   const passwordRef = useRef()
 
   const [error, setError] = useState('')
-  // aviod multi clicks of the Sign Up button after first submission
+  // Aviod multi clicks of the Sign Up button after first submission
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const { login } = useAuth()
@@ -24,12 +25,12 @@ const LoginForm = () => {
       }
       const result = await login(user)
       if (!result) {
-        showError('Failed to login to account')
+        showError('Failed to login to account, please try later.')
         return
       }
       navigate(state?.path || '/dashboard')
     } catch {
-      showError('Failed to login to account')
+      showError('Failed to login to account, please try later.')
       setLoading(false)
     }
   }
@@ -62,10 +63,11 @@ const LoginForm = () => {
           ref={passwordRef}
           required
         />
-
-        <button disabled={loading} type='submit'>
-          Log In
-        </button>
+        <div className='btn-wrap'>
+          <Button disabled={loading} type='submit' buttonStyle='btn--submit'>
+            Log In
+          </Button>
+        </div>
         <div className='switch'>
           Need to create an account? <Link to='/sign-up'>Sign Up</Link>
         </div>

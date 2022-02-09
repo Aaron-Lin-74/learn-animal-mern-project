@@ -32,7 +32,11 @@ const Reviews = () => {
     data: { reviews },
     isLoaded,
   } = useFetch('/api/reviews')
+
+  // Use index local state to store the index of the current review
   const [index, setIndex] = useState(0)
+
+  // Side effect to handle the boundary condition
   useEffect(() => {
     if (isLoaded) {
       const lastIndex = reviews.length - 1
@@ -46,7 +50,7 @@ const Reviews = () => {
     }
   }, [index, reviews, isLoaded])
 
-  // Let the reivews keep rolling
+  // Let the reivews keep rolling every 4 seconds
   useEffect(() => {
     const slider = setInterval(() => {
       setIndex((index) => index + 1)
@@ -54,6 +58,18 @@ const Reviews = () => {
     return () => clearInterval(slider)
   })
 
+  // Set slide class based on the relation to index
+  const setSlideClass = (ind) => {
+    // Set the default slide class to nextSlide
+    let slideClass = 'nextSlide'
+    if (ind === index) {
+      slideClass = 'activeSlide'
+    }
+    if (ind === index - 1 || (index === 0 && ind === reviews.length - 1)) {
+      slideClass = 'lastSlide'
+    }
+    return slideClass
+  }
   return (
     <section className='reviews'>
       <h2 className='rev-title'>/ Reviews</h2>
@@ -61,16 +77,7 @@ const Reviews = () => {
         {isLoaded &&
           reviews.map((review, ind) => {
             const { id, image, name, title, quote } = review
-            let slideClass = 'nextSlide'
-            if (ind === index) {
-              slideClass = 'activeSlide'
-            }
-            if (
-              ind === index - 1 ||
-              (index === 0 && ind === reviews.length - 1)
-            ) {
-              slideClass = 'lastSlide'
-            }
+            let slideClass = setSlideClass(ind)
             return (
               <article key={id} className={slideClass}>
                 <img src={image} alt={name} className='person-img' />

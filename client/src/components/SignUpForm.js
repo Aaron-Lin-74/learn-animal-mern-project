@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../contexts/AuthContext'
+import Button from './Button'
 
 const SignUpForm = () => {
   const userNameRef = useRef()
@@ -21,7 +22,6 @@ const SignUpForm = () => {
     try {
       setError('')
       setLoading(true)
-      // await signup(emailRef.current.value, passwordRef.current.value)
       const user = {
         name: userNameRef.current.value,
         email: emailRef.current.value,
@@ -29,16 +29,17 @@ const SignUpForm = () => {
       }
       const result = await signUp(user)
       if (!result) {
-        showError('The error from the fetch')
+        showError('Something went wrong, please try later.')
         return
       }
       navigate('/dashboard')
     } catch {
-      showError('Failed to create an account')
+      showError('Failed to create an account, please try later.')
       setLoading(false)
     }
   }
 
+  // The error notice will disappear after 5 seconds
   function showError(message) {
     setError(message)
     setTimeout(() => setError(''), 5000)
@@ -82,9 +83,11 @@ const SignUpForm = () => {
           ref={passwordConfirmRef}
           required
         />
-        <button disabled={loading} type='submit'>
-          Sign Up
-        </button>
+        <div className='btn-wrap'>
+          <Button disabled={loading} type='submit' buttonStyle='btn--submit'>
+            Sign Up
+          </Button>
+        </div>
         <div className='switch'>
           Already have an account? <Link to='/login'>Log In</Link>
         </div>

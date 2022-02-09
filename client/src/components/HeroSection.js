@@ -2,12 +2,14 @@ import React, { useRef, useState } from 'react'
 import Button from './Button'
 import { FaPlayCircle, FaPauseCircle } from 'react-icons/fa'
 import './HeroSection.css'
+import { useGlobalContext } from '../contexts/AppContext'
 
 const HeroSection = () => {
   const videoRef = useRef()
   const [isPlay, setIsPlay] = useState(true)
+  const { redirect } = useGlobalContext()
 
-  // toggle the play or pause of the hero video
+  // Toggle the play or pause of the hero video
   const pausePlayVideo = () => {
     setIsPlay(!isPlay)
     if (videoRef.current.paused || videoRef.current.ended)
@@ -15,10 +17,6 @@ const HeroSection = () => {
     else videoRef.current.pause()
   }
 
-  // redirect to the youtube on a new tab
-  const redirect = () => {
-    window.open('https://www.youtube.com/watch?v=MhhAox6Zei8', '_blank')
-  }
   return (
     <section className='hero-container'>
       <video
@@ -58,7 +56,9 @@ const HeroSection = () => {
           className='btns'
           buttonStyle='btn--primary'
           buttonSize='btn--large'
-          onClick={redirect}
+          onClick={() =>
+            redirect('https://www.youtube.com/watch?v=MhhAox6Zei8')
+          }
         >
           Watch <FaPlayCircle />
         </Button>

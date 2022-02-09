@@ -1,40 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './Footer.css'
-import Button from './Button'
 import { BsFacebook, BsInstagram, BsTwitter, BsYoutube } from 'react-icons/bs'
 import { GiTigerHead } from 'react-icons/gi'
+
 const Footer = () => {
   return (
     <div className='footer-container'>
-      <section className='footer-subscription'>
-        <h3 className='footer-subscription-heading'>
-          Join the Learn Animals newsletter to receive our latest updates
-        </h3>
-        <p className='footer-subscription-text'>
-          You can unsubscribe at any time.
-        </p>
-        <div className='input-areas'>
-          <form>
-            <input
-              type='email'
-              name='email'
-              className='footer-input'
-              placeholder='Your Email'
-              required
-            />
-            <Button buttonStyle='btn--outline' buttonSize='btn--medium'>
-              Subscribe
-            </Button>
-          </form>
-        </div>
-      </section>
       <section className='footer-links'>
         <div className='footer-nav-items'>
           <Link className='footer-btn' to='/contact'>
             Contact
           </Link>
-          <Link className='footer-btn' to='/about-us'>
+          <Link className='footer-btn' to='/about'>
             About Us
           </Link>
           <Link className='footer-btn' to='/faq'>

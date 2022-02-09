@@ -12,7 +12,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  top: 80px;
+  top: var(--headerHeight);
   position: absolute;
 }
 .sign-up-error,
@@ -52,13 +52,6 @@
   padding: 25px 35px;
 }
 
-.sign-up-form *,
-.login-form * {
-  color: #ffffff;
-  letter-spacing: 0.5px;
-  outline: none;
-  border: none;
-}
 .sign-up-form h3,
 .login-form h3 {
   font-size: 32px;
@@ -85,24 +78,20 @@
   margin-top: 8px;
   font-size: 14px;
   font-weight: 300;
-  color: #e5e5e5;
+  color: #fff;
+  letter-spacing: 0.5px;
+  outline: none;
+  border: none;
 }
-.sign-up-form button,
-.login-form button {
+
+.sign-up-form ::placeholder,
+.login-form ::placeholder {
+  color: #b4aeae;
+  opacity: 1; /* Firefox */
+}
+
+.btn-wrap {
   margin-top: 50px;
-  width: 100%;
-  background-color: #fff;
-  color: #080710;
-  padding: 15px 0;
-  font-size: 18px;
-  font-weight: 600;
-  border-radius: 5px;
-  cursor: pointer;
-}
-.sign-up-form button:hover,
-.login-form button:hover {
-  transform: scale(1.1);
-  background-color: lightgreen;
 }
 
 .sign-up .switch,

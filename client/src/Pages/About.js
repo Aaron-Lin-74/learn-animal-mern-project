@@ -1,16 +1,13 @@
 import React, { useEffect } from 'react'
 import { useGlobalContext } from '../contexts/AppContext'
+import AboutSection from '../components/AboutSection/AboutSection'
 
-const Services = () => {
+const About = () => {
   const { scrollTop } = useGlobalContext()
   useEffect(() => {
     scrollTop()
   }, [scrollTop])
-  return (
-    <div className='services'>
-      <h1>Services</h1>
-    </div>
-  )
+  return <AboutSection />
 }
 
-export default Services
+export default About

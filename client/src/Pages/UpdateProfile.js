@@ -9,11 +9,11 @@ const UpdateProfile = () => {
     scrollTop()
   }, [scrollTop])
   return (
-    <div className='update-profile'>
+    <main className='update-profile'>
       <div className='update-profile-flex'>
         <UpdateProfileForm />
       </div>
-    </div>
+    </main>
   )
 }
 

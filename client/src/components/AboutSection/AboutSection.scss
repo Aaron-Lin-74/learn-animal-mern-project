@@ -1,0 +1,48 @@
+@use 'src/styles/mixins';
+@use 'src/styles/variables' as var;
+
+.about-section {
+  background: rgba(0, 0, 0, 0.7) url(../../backgroundImages/owl-wallpaper.jpg);
+  background-position: left;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var.$mainFontColor;
+  min-height: var.$minHeight;
+
+  .about-container {
+    @include mixins.flexCenter(column);
+    min-width: var.$minWidth;
+    max-width: 800px;
+    flex: 1;
+    padding: 10px 20px;
+    margin: 0 auto;
+    margin-left: 30%;
+    .section-title {
+      font-size: 30px;
+      text-align: center;
+      padding: 20px 0;
+    }
+    .text-center {
+      text-align: center;
+      padding: 15px 0;
+    }
+    p {
+      font-size: 15px;
+      line-height: 2;
+      padding: 5px 0;
+    }
+  }
+  @media only screen and (max-width: 1200px) {
+    .about-container {
+      margin-left: 45%;
+      margin-right: 20px;
+    }
+  }
+  @media only screen and (max-width: 768px) {
+    .about-container {
+      backdrop-filter: blur(20px);
+      margin: 0;
+    }
+  }
+}

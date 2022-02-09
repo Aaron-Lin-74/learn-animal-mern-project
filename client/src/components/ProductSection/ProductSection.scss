@@ -1,0 +1,99 @@
+@use '/src/styles/mixins';
+@use '/src/styles/variables' as var;
+
+.product-section {
+  max-width: var.$fullWidth;
+  margin: 0 auto;
+  padding: 10px;
+  .product {
+    display: grid;
+    // grid-template-rows: 3fr 1fr;
+    grid-gap: 20px;
+    overflow: hidden;
+    padding: 10px;
+    backdrop-filter: blur(20px);
+    border: 1px solid white;
+    border-radius: 5px;
+
+    .product-imgs {
+      overflow: hidden;
+      .img-display {
+        overflow: hidden;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        display: flex;
+
+        img {
+          object-fit: cover;
+        }
+        .hide {
+          display: none;
+        }
+      }
+      .img-select {
+        display: flex;
+        cursor: pointer;
+        .img-item {
+          overflow: hidden;
+          margin-left: 5px;
+          &:first-child {
+            margin-left: unset;
+          }
+          img {
+            object-fit: cover;
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+    }
+    .product-desc {
+      @include mixins.flexCenter(column);
+      line-height: 2;
+
+      .explore {
+        @include mixins.flexCenter(row);
+        border: 2px solid #fff;
+        cursor: pointer;
+        color: var(--mainFontColor);
+        text-decoration: none;
+        padding: 0.5rem 1rem;
+        width: 200px;
+        &:hover {
+          border-bottom: 4px solid #fff;
+          transform: scale(1.1);
+          transition: all 0.2s ease-out;
+        }
+      }
+    }
+  }
+
+  @media only screen and (min-width: 960px) {
+    height: var.$minHeight;
+    padding: 20px;
+    @include mixins.flexCenter(column);
+    .product {
+      grid-template-rows: unset;
+      grid-template-columns: 2fr 1fr;
+      grid-gap: 10px;
+      padding: 20px;
+
+      .product-imgs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .img-display {
+          .img-showcase {
+            height: 460x;
+          }
+        }
+      }
+
+      .product-desc {
+        justify-content: space-between;
+      }
+    }
+  }
+}

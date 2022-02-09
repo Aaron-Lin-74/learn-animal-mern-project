@@ -10,7 +10,7 @@ const UpdateProfileForm = () => {
   const passwordRef = useRef()
   const passwordConfirmRef = useRef()
   const [error, setError] = useState('')
-  // aviod multi clicks of the Sign Up button after first submission
+  // aviod multi clicks of the button after first submission
   const [loading, setLoading] = useState(false)
   const navigate = useNavigate()
   const { currentUser, updateUserProfile, logout } = useAuth()
@@ -25,28 +25,24 @@ const UpdateProfileForm = () => {
       setLoading(true)
       const updatedUser = {}
 
-      // const promises = []
       // Check whether the user name has been changed
       if (userNameRef.current.value !== currentUser.name) {
-        //   promises.push(updateName(userNameRef.current.value))
         updatedUser.name = userNameRef.current.value
       }
 
       // Check whether the email has been changed
       if (emailRef.current.value !== currentUser.email) {
-        // promises.push(updateEmail(emailRef.current.value))
         updatedUser.email = emailRef.current.value
       }
 
       // Check if the new password has been entered
       if (passwordRef.current.value) {
-        // promises.push(updatePassword(passwordRef.current.value))
         updatedUser.password = passwordRef.current.value
       }
-      // const result = await Promise.all(promises)
+
       const result = await updateUserProfile(updatedUser)
       if (!result) {
-        showError('Failed to update the profile')
+        showError('Failed to update the profile, please try later.')
         return
       }
 
@@ -58,7 +54,7 @@ const UpdateProfileForm = () => {
       }
       navigate('/dashboard')
     } catch {
-      showError('Failed to update the profile')
+      showError('Failed to update the profile, please try later.')
       setLoading(false)
     }
   }

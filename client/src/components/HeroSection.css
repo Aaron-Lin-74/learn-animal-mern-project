@@ -67,12 +67,12 @@ video {
     font-size: 30px;
   }
 
-  .btn-mobile {
+  .hero-container .btn-mobile {
     display: block;
     text-decoration: none;
   }
 
-  .btns {
+  .hero-container .btns {
     width: 100%;
   }
 }

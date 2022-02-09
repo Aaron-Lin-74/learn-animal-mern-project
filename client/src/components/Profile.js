@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useAuth } from '../contexts/AuthContext'
 import './Profile.css'
 import Button from './Button'
+import { BsFillGearFill } from 'react-icons/bs'
 
 const Profile = () => {
   const { currentUser, deleteUser } = useAuth()
-
+  const [toggle, setToggle] = useState(false)
   const handleDeleteUser = () => {
     if (
       window.confirm(
@@ -16,14 +17,29 @@ const Profile = () => {
     }
   }
   return (
-    <div className='profile'>
-      <h1>Profile</h1>
-      <h2>User Name: {currentUser.name}</h2>
-      <h2>Email: {currentUser.email}</h2>
-      <Button path='/update-profile'>Update Profile</Button>
-      <Button onClick={handleDeleteUser} buttonStyle='btn--danger'>
-        Delete Account
-      </Button>
+    <div
+      className={toggle ? 'profile-on profile-container' : 'profile-container'}
+    >
+      <div className='profile'>
+        <div className='profile-edit' onClick={() => setToggle(!toggle)}>
+          <BsFillGearFill />
+        </div>
+      </div>
+      <div className='profile-down'>
+        <div className='profile-text'>
+          <h2>{currentUser.name}</h2>
+          <p>Email: {currentUser.email}</p>
+        </div>
+      </div>
+      <div className='profile-back'>
+        <h2>Profile</h2>
+        <Button path='/update-profile' buttonStyle='btn--confirm'>
+          Update Profile
+        </Button>
+        <Button onClick={handleDeleteUser} buttonStyle='btn--danger'>
+          Delete Account
+        </Button>
+      </div>
     </div>
   )
 }

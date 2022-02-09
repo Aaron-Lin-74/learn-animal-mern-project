@@ -11,9 +11,9 @@ const Dashboard = () => {
   }, [scrollTop])
   return (
     currentUser && (
-      <div className='dashboard'>
+      <main className='dashboard'>
         <Profile />
-      </div>
+      </main>
     )
   )
 }

@@ -1,0 +1,64 @@
+.faq-card {
+  line-height: 1.25rem;
+  background-color: #fff;
+  transition: all 250ms ease-in-out;
+}
+
+/* Question */
+.card-header {
+  padding: 15px 50px;
+  cursor: pointer;
+}
+
+.card-header:hover {
+  background-color: lightgray;
+}
+
+.card-header.select h3 {
+  color: #1f1f1f;
+  font-weight: 700;
+}
+
+.card-header h3 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  outline: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: rgb(141, 141, 140);
+}
+
+.arrow-icon {
+  color: #0b57d0;
+  height: 1.25rem;
+  width: 1.25rem;
+  font-size: 1.5rem;
+}
+
+/* Answer */
+.collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease-in-out;
+}
+
+.collapse.show {
+  background-color: #d8e4f7;
+  padding: 15px 50px;
+  color: #1f1f1f;
+  font-size: 0.875rem;
+  line-height: 0.875rem;
+  max-height: 100px;
+  transition: all 0.5s ease-in-out;
+}
+
+@media only screen and (max-width: 768px) {
+  .card-header {
+    padding: 10px 20px;
+  }
+
+  .collapse.show {
+    padding: 10px 20px;
+  }
+}

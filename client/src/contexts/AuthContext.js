@@ -8,7 +8,6 @@ export function AuthProvider({ children }) {
   const navigate = useNavigate()
 
   async function signUp(user) {
-    // create a new user, this is the test api url
     try {
       const response = await fetch(`/api/users`, {
         method: 'POST',
@@ -21,6 +20,8 @@ export function AuthProvider({ children }) {
         throw new Error('Network response was not OK')
       }
       const data = await response.json()
+
+      // Update the user state and save the token in local storage
       setCurrentUser(data.user)
       localStorage.setItem('accessToken', data.accessToken)
       return data
@@ -31,7 +32,6 @@ export function AuthProvider({ children }) {
   }
 
   async function login(user) {
-    // create a new user, this is the test api url
     try {
       const response = await fetch(`/api/auth`, {
         method: 'POST',

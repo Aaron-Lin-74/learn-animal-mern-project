@@ -5,6 +5,7 @@ import '../App.css'
 import Cards from '../components/Cards'
 import Gallery from '../components/Gallery'
 import Reviews from '../components/Reviews'
+import Subscription from '../components/Subscription'
 
 const Home = () => {
   const { scrollTop } = useGlobalContext()
@@ -12,12 +13,13 @@ const Home = () => {
     scrollTop()
   }, [scrollTop])
   return (
-    <div>
+    <main className='home'>
       <HeroSection />
       <Gallery />
       <Cards />
       <Reviews />
-    </div>
+      <Subscription />
+    </main>
   )
 }
 

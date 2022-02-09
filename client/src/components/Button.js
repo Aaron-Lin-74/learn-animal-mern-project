@@ -1,8 +1,17 @@
 import React from 'react'
 import './Button.css'
 import { Link } from 'react-router-dom'
+import { ImArrowUp } from 'react-icons/im'
 
-const STYLES = ['btn--primary', 'btn--outline', 'btn--danger', 'btn--confirm']
+const STYLES = [
+  'btn--primary',
+  'btn--outline',
+  'btn--danger',
+  'btn--confirm',
+  'btn--scrollUp',
+  'btn--submit',
+  'btn--circle',
+]
 const SIZES = ['btn--medium', 'btn--large']
 
 const Button = ({
@@ -13,6 +22,7 @@ const Button = ({
   buttonSize,
   path,
   disabled,
+  display,
 }) => {
   // If a button does not have a style, the default style is btn--primary, default size is medium
   const checkButtonStyle = STYLES.includes(buttonStyle)
@@ -33,6 +43,19 @@ const Button = ({
           {children}
         </button>
       </Link>
+    )
+  }
+  if (buttonStyle === 'btn--scrollUp') {
+    return (
+      <button
+        className={`btns ${checkButtonStyle} ${checkButtonSize}`}
+        onClick={onClick}
+        type={type}
+        disabled={disabled}
+        style={{ display: display }}
+      >
+        <ImArrowUp />
+      </button>
     )
   }
   return (

@@ -1,0 +1,58 @@
+.animals-container-flex {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 60vh;
+}
+.animals-notice {
+  margin: 0 auto;
+  padding-top: 200px;
+}
+.animal-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 400px));
+  grid-auto-rows: 300px;
+  grid-auto-flow: dense;
+  grid-gap: 20px;
+  justify-content: center;
+  padding: 30px;
+}
+
+.load-more {
+  background: rgb(254, 193, 130);
+  color: white;
+  padding: 5px;
+  height: 40px;
+  width: 150px;
+  border: 1px solid white;
+  outline: none;
+  margin: 10px auto;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.load-more.hidden {
+  visibility: hidden;
+}
+
+.load-more:hover {
+  background: rgb(253, 165, 140);
+  transform: scale(1.05);
+}
+
+@media (max-width: 960px) {
+  .animals-container-flex {
+    width: 90%;
+  }
+  .animal-cards {
+    grid-template-columns: repeat(auto-fit, 350px);
+    grid-auto-rows: 300px;
+    grid-gap: 5px;
+  }
+
+  .scroll-top {
+    right: 0;
+    bottom: 60px;
+  }
+}

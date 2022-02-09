@@ -1,0 +1,117 @@
+.card-item {
+  display: flex;
+  flex: 1;
+  margin: 0 1rem 2rem;
+  transition: all 250ms;
+}
+.card-item.animal {
+  position: relative;
+}
+.card-item.animal:nth-child(7n + 1) {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+.card-item.animal .card-item-info {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: all 250ms ease;
+  z-index: 1;
+}
+.card-item.animal:hover .card-item-info {
+  opacity: 1;
+}
+.card-item-link {
+  display: flex;
+  flex-flow: column;
+  width: 100%;
+  box-shadow: 0 6px 20px rgba(56, 125, 255, 0.17);
+  border-radius: 10px;
+  overflow: hidden;
+  text-decoration: none;
+  background-color: #fff;
+}
+
+.card-item-img-wrap {
+  position: relative;
+  width: 100%;
+  min-height: 70%;
+  height: 70%;
+  overflow: hidden;
+}
+
+.card-item-img-wrap.animal {
+  height: 100%;
+  min-height: 100%;
+}
+
+.card-item-img-wrap::after {
+  content: attr(data-category);
+  position: absolute;
+  bottom: 0;
+  margin-left: 10px;
+  padding: 6px 8px;
+  max-width: calc((100%) - 60px);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--mainFontColor);
+  background-color: #1f98f4;
+  box-sizing: border-box;
+}
+
+.card-item-img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  transition: all 0.2s linear;
+}
+
+.card-item .hidden {
+  visibility: hidden;
+}
+
+.card-item:hover .card-item-img {
+  transform: scale(1.1);
+}
+
+.card-item-info {
+  padding: 0px 20px;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-item-text {
+  color: #0e162e;
+  font-size: clamp(15px, 2.5vw, 25px);
+  line-height: clamp(22px, 24px, 28px);
+}
+
+@media only screen and (max-width: 960px) {
+  .card-item.animal:nth-child(7n + 1) {
+    grid-column: unset;
+    grid-row: unset;
+  }
+}
+@media only screen and (max-width: 480px) {
+  .card-item.aniaml {
+    height: 200px;
+  }
+
+  .card-item-text {
+    font-size: 15px;
+    line-height: 20px;
+  }
+  .card-item-img-wrap {
+    min-height: 60%;
+  }
+}

@@ -1,0 +1,44 @@
+.subscription {
+  background: var(--backgroundColor);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--mainFontColor);
+  padding: 1.5rem;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.subscription-heading {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.subscription-text {
+  font-size: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.subscription-input {
+  padding: 8px 20px;
+  border-radius: 2px;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  outline: none;
+  border: 1px solid white;
+  font-size: 1rem;
+}
+
+.subscription .error-info {
+  background-color: red;
+  padding: 5px 40px;
+  border-radius: 10px;
+}
+
+@media screen and (max-width: 720px) {
+  .subscription {
+    padding-top: 5rem;
+  }
+}

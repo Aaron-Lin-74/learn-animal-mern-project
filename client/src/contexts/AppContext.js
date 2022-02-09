@@ -4,8 +4,30 @@ import React, { useState, useEffect, useContext, useCallback } from 'react'
 const AppContext = React.createContext()
 
 export const AppProvider = ({ children }) => {
-  // The animals data fetched from the server
-  // const [animals, setAnimals] = useState([])
+  const [searchTerm, setSearchTerm] = useState('')
+
+  // All types of animals in single form
+  const allTypes = [
+    'mammal',
+    'bird',
+    'reptile',
+    'fish',
+    'amphibian',
+    'invertebrate',
+  ]
+
+  // All types of animals in plural form
+  const allTypesPlural = [
+    'mammals',
+    'birds',
+    'reptiles',
+    'fish',
+    'amphibians',
+    'invertebrates',
+  ]
+
+  // Premium types that require user login
+  const premiumTypes = ['reptiles', 'fish', 'amphibians', 'invertebrates']
 
   // Small large screen break point is 960px
   const screenBreakPoint = 960
@@ -35,15 +57,6 @@ export const AppProvider = ({ children }) => {
   // location is an object that has the coordinate (x, y) properties
   const [location, setLocation] = useState({})
 
-  // const loadAnimals = async (type, limit) => {
-  //   try {
-  //     // Use query string to set the type and limit
-  //     const response = await axios.get(`/api/animals/${type}?limit=${limit}`)
-  //     setAnimals(response.data)
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // }
   const openSubmenu = (page, coordinate) => {
     setLocation(coordinate)
     setIsSubmenuOpen(true)
@@ -82,9 +95,14 @@ export const AppProvider = ({ children }) => {
   const closeModal = () => {
     setIsModalOpen(false)
     // document.body.style.position = ''
-    document.body.style.overflow = 'visible'
-    // document.body.style.setProperty('overflow', 'visible', 'important')
+    // document.body.style.overflow = 'visible'
+    document.body.style.setProperty('overflow', 'visible', 'important')
     document.getElementById('hero-video').play()
+  }
+
+  // redirect to the url on a new tab
+  const redirect = (url) => {
+    window.open(url, '_blank')
   }
 
   useEffect(() => {
@@ -96,8 +114,11 @@ export const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
-        // animals,
-        // loadAnimals,
+        searchTerm,
+        setSearchTerm,
+        allTypes,
+        allTypesPlural,
+        premiumTypes,
         isSubmenuOpen,
         openSubmenu,
         closeSubmenu,
@@ -116,6 +137,7 @@ export const AppProvider = ({ children }) => {
         closeModal,
         galleryImageNames,
         modalIndex,
+        redirect,
       }}
     >
       {children}

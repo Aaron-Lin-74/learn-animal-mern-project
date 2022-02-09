@@ -9,11 +9,11 @@ const Login = () => {
     scrollTop()
   }, [scrollTop])
   return (
-    <div className='login'>
+    <main className='login'>
       <div className='login-flex'>
         <LoginForm />
       </div>
-    </div>
+    </main>
   )
 }
 
