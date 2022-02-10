@@ -8,9 +8,9 @@ const AboutSection = () => {
         <h1 className='section-title'>About Us</h1>
 
         <p>
-          Learn Animals web application is developed by Aaron Lin for his
-          beloved children to learn more about animals, and for demonstration
-          purpose as well.
+          Learn Animals web application is designed and developed by Aaron Lin
+          for his beloved children to learn more about animals, and for
+          demonstration purpose as well.
         </p>
         <p>
           This is a MERN full-stack web application, including React based
@@ -21,7 +21,8 @@ const AboutSection = () => {
 
         <h3 className='text-center'>Front-end</h3>
         <p>
-          For the React front-end application, we use React-Router-dom to
+          For the React front-end application, we use function components to
+          create independent, resuable UI pieces, and React-Router-dom to
           perform the browser router. We have two useContext hooks for
           authentication and global context. We created a custom hook useFetch
           to fetch the data from the server via REST API using Axios. We used
@@ -37,15 +38,18 @@ const AboutSection = () => {
           MongoDB interaction. We also use Bcrypt to encrypt the password stored
           in the MongoDB, and JWT for user authentication. We created middleware
           to authenticate the user, get the user after authentication, and log
-          request, response data.
+          request information.
         </p>
 
-        {/* <h3 className='text-center'>Deploy</h3>
+        <h3 className='text-center'>CI/CD</h3>
         <p>
-          For deployment, we use AWS LightSail to host our full-stack web
-          application. We use nginx as reverse-proxy, and PM2 to manage the
-          application to keep it alive 24/7.
-        </p> */}
+          We use GitHub to host the source code and AWS CodePipeline to link
+          GitHub repository and continuously deploy to Elastic Beanstalk which
+          is a PaaS offering from AWS. It takes care of underlying
+          infrastructure, automatically handles the details of capacity
+          provisioning, load balancing, scaling, and application health
+          monitoring.
+        </p>
       </div>
     </section>
   )
