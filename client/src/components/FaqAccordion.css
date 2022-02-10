@@ -5,8 +5,7 @@
   border: 0.75px solid #0e162e;
   border-radius: 10px;
   overflow: hidden;
-  position: absolute;
-  top: 30vh;
+  margin-bottom: 10vh;
 }
 
 .accordion .faq-card {

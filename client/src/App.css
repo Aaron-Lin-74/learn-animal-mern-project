@@ -190,10 +190,6 @@ FAQ page
   text-align: center;
 }
 .faq-img-container {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 300px;
   height: 200px;
   overflow: hidden;
 }
@@ -320,11 +316,6 @@ Single Animal page
     margin-left: 45%;
     margin-right: 20px;
   }
-
-  .faq-img-container {
-    width: 200px;
-    height: 200px;
-  }
   .dashboard {
     background-image: url(./backgroundImages/white-background.jpg);
   }
@@ -349,15 +340,14 @@ Single Animal page
     backdrop-filter: blur(20px);
     margin: 0;
   }
+  .faq-img-container {
+    height: 150px;
+  }
   .thank-you {
     background-position: left;
   }
   .thank-you-container {
     width: 80%;
-  }
-  .faq-img-container {
-    width: 150px;
-    height: 150px;
   }
   .animal-info-container {
     padding-top: 0;
