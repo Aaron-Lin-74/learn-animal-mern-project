@@ -40,20 +40,22 @@ const UpdateProfileForm = () => {
         updatedUser.password = passwordRef.current.value
       }
 
-      const result = await updateUserProfile(updatedUser)
-      if (!result) {
-        showError('Failed to update the profile, please try later.')
+      const [success, result] = await updateUserProfile(updatedUser)
+      if (!success) {
+        // The access token is not valid, re-login
+        if (result === 403) {
+          showError(result.message || 'Session expires, please login again')
+          setTimeout(logout, 4000)
+          return
+        }
+        showError(
+          result.message || 'Failed to update the profile, please try later.'
+        )
         return
       }
 
-      // The access token is not valid, re-login
-      if (result === 403) {
-        showError('Session expires, please login again')
-        setTimeout(logout, 3000)
-        return
-      }
       navigate('/dashboard')
-    } catch {
+    } catch (err) {
       showError('Failed to update the profile, please try later.')
       setLoading(false)
     }
@@ -61,7 +63,7 @@ const UpdateProfileForm = () => {
 
   function showError(message) {
     setError(message)
-    setTimeout(() => setError(''), 5000)
+    setTimeout(() => setError(''), 3000)
   }
 
   return (

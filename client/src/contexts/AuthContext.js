@@ -16,18 +16,18 @@ export function AuthProvider({ children }) {
         },
         body: JSON.stringify(user),
       })
-      if (!response.ok) {
-        throw new Error('Network response was not OK')
-      }
       const data = await response.json()
+      if (!response.ok) {
+        throw new Error(data.message)
+      }
 
       // Update the user state and save the token in local storage
       setCurrentUser(data.user)
       localStorage.setItem('accessToken', data.accessToken)
-      return data
+      return [true, data]
     } catch (err) {
-      console.error(err)
-      return false
+      // console.error(err)
+      return [false, err.message]
     }
   }
 
@@ -40,16 +40,16 @@ export function AuthProvider({ children }) {
         },
         body: JSON.stringify(user),
       })
-      if (!response.ok) {
-        throw new Error('Network response was not OK')
-      }
       const data = await response.json()
+      if (!response.ok) {
+        throw new Error(data.message)
+      }
       setCurrentUser(data.user)
       localStorage.setItem('accessToken', data.accessToken)
-      return data
+      return [true, data]
     } catch (err) {
-      console.error(err)
-      return false
+      // console.error(err)
+      return [false, err.message]
     }
   }
 
@@ -71,15 +71,15 @@ export function AuthProvider({ children }) {
         },
         body: JSON.stringify({ ...user }),
       })
-      if (!response.ok) {
-        // throw new Error('Network response was not OK')
-        return response.status
-      }
       const data = await response.json()
+      if (!response.ok) {
+        throw new Error(data.message)
+      }
       setCurrentUser(data.user)
-      return data.message
+      return [true, data]
     } catch (err) {
-      console.error(err)
+      // console.error(err)
+      return [false, err.message]
     }
   }
 

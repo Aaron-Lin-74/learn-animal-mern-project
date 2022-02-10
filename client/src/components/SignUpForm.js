@@ -27,22 +27,23 @@ const SignUpForm = () => {
         email: emailRef.current.value,
         password: passwordRef.current.value,
       }
-      const result = await signUp(user)
-      if (!result) {
-        showError('Something went wrong, please try later.')
+      const [success, result] = await signUp(user)
+      if (!success) {
+        showError(result || 'Something went wrong, please try later.')
+        setLoading(false)
         return
       }
       navigate('/dashboard')
-    } catch {
+    } catch (err) {
       showError('Failed to create an account, please try later.')
       setLoading(false)
     }
   }
 
-  // The error notice will disappear after 5 seconds
+  // The error notice will disappear after 3 seconds
   function showError(message) {
     setError(message)
-    setTimeout(() => setError(''), 5000)
+    setTimeout(() => setError(''), 3000)
   }
 
   return (

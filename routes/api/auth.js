@@ -46,7 +46,7 @@ router.post('/', async (req, res) => {
     }
   } catch (e) {
     console.log(e)
-    res.status(500).send(e)
+    res.status(500).json({ message: e.message })
   }
 })
 
@@ -58,7 +58,7 @@ router.get('/user', authenticateToken, async (req, res) => {
     const user = await User.findById(req.user.id).select('-password')
     res.json(user)
   } catch (e) {
-    res.status(500).send(e)
+    res.status(500).json({ message: e.message })
   }
 })
 module.exports = router

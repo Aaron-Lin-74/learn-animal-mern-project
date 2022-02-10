@@ -16,7 +16,9 @@ const authenticateToken = (req, res, next) => {
   jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
     if (err) {
       // The user has the token but it is no longer valid
-      return res.status(403).json({ message: 'Forbidden' })
+      return res
+        .status(403)
+        .json({ message: 'Session expires, please login againForbidden' })
     }
 
     // Add user to payload

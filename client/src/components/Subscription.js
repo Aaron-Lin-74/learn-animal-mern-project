@@ -10,7 +10,7 @@ const Subscription = () => {
 
   function showError(message) {
     setError(message)
-    setTimeout(() => setError(''), 5000)
+    setTimeout(() => setError(''), 3000)
   }
   async function handleSubmit(e) {
     e.preventDefault()
@@ -22,8 +22,9 @@ const Subscription = () => {
         },
         body: JSON.stringify({ email }),
       })
+      const jsonResponse = await response.json()
       if (!response.ok) {
-        throw new Error('Something went wrong, please try again later.')
+        throw new Error(jsonResponse.message)
       }
       navigate('/thank-you/subscription')
     } catch (err) {

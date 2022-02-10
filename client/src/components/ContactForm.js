@@ -38,21 +38,21 @@ const ContactForm = () => {
         if (response.ok) {
           return response.json()
         } else {
-          throw new Error('Something went wrong')
+          throw new Error('Something went wrong, please try later again.')
         }
       })
       .then((data) => {
         navigate('/thank-you/contact')
       })
-      .catch((error) => {
-        showError('Something went wrong, please try later.')
+      .catch((err) => {
+        showError(err.message)
         setLoading(false)
       })
   }
 
   function showError(message) {
     setError(message)
-    setTimeout(() => setError(''), 5000)
+    setTimeout(() => setError(''), 3000)
   }
   return (
     <div className='contact-container'>

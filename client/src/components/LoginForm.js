@@ -23,13 +23,14 @@ const LoginForm = () => {
         email: emailRef.current.value,
         password: passwordRef.current.value,
       }
-      const result = await login(user)
-      if (!result) {
-        showError('Failed to login to account, please try later.')
+      const [success, result] = await login(user)
+      if (!success) {
+        showError(result || 'Failed to login to account, please try later.')
+        setLoading(false)
         return
       }
       navigate(state?.path || '/dashboard')
-    } catch {
+    } catch (err) {
       showError('Failed to login to account, please try later.')
       setLoading(false)
     }
@@ -37,7 +38,7 @@ const LoginForm = () => {
 
   function showError(message) {
     setError(message)
-    setTimeout(() => setError(''), 5000)
+    setTimeout(() => setError(''), 3000)
   }
 
   return (
