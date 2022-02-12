@@ -3,8 +3,9 @@ const jwt = require('jsonwebtoken')
 
 // Validate the access token
 const authenticateToken = (req, res, next) => {
-  // The token is in the headers with Bearer
-  const authHeader = req.headers.authorization
+  // The token is in the headers with Bearer, Express headers are auto converted to lowercase
+  const authHeader =
+    req.headers['x-access-token'] || req.headers['authorization']
   const token = authHeader && authHeader.split(' ')[1]
 
   // Check the existance of the token
