@@ -6,8 +6,14 @@ const AnimalSchema = new mongoose.Schema({
     required: true,
     trim: true,
     maxlength: [30, 'Animal name should be less than 30 characters'],
+    lowercase: true,
+    index: true,
   },
-  type: String,
+  type: {
+    type: String,
+    lowercase: true,
+    required: true,
+  },
   imageUrl: String,
   desc: {
     type: String,
