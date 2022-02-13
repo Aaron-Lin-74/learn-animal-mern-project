@@ -57,12 +57,15 @@ const ProductSection = () => {
         <div className='product-desc'>
           <h1>Description</h1>
           <p>
-            The Animal Sounds web application is created by Aaron Lin for his
-            beloved children and for kids to learn more about animals. We used
-            React to create the UI and Google Firebase to store information
-            about different kinds of animals like images and sounds. It is fun
-            to explore how different types of animals sound. We will add more
-            new animals constantly.
+            We used React to create the UI and Google Firebase as the back-end
+            which handles user authentication, and stores information about
+            different kinds of animals, like images and sounds.
+          </p>
+          <p>
+            It is fun to explore what different types of animals sound like. We
+            will add more new animals constantly. The live application is hosted
+            using Firebase. Feel free to play around with it and you will find
+            some animal sounds are so amazing!
           </p>
           <p>Click the link below to explore more.</p>
           <a
