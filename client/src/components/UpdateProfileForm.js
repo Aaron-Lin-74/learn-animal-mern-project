@@ -42,15 +42,8 @@ const UpdateProfileForm = () => {
 
       const [success, result] = await updateUserProfile(updatedUser)
       if (!success) {
-        // The access token is not valid, re-login
-        if (result === 403) {
-          showError(result.message || 'Session expires, please login again')
-          setTimeout(logout, 4000)
-          return
-        }
-        showError(
-          result.message || 'Failed to update the profile, please try later.'
-        )
+        showError(result || 'Failed to update the profile, please try later.')
+        setLoading(false)
         return
       }
 
