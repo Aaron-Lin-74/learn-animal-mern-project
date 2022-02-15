@@ -8,7 +8,7 @@ const Cards = () => {
       <h2> Explore different types of animals </h2>
       <div className='cards-container'>
         <div className='cards-wrapper'>
-          <ul className='card-items-l'>
+          <div className='card-items-l'>
             <CardItem
               src='images/fennec.jpg'
               text='Mammals include humans and all other animals that are warm-blooded vertebrates (vertebrates have backbones) with hair. They feed their young with milk and have a more well-developed brain.  '
@@ -21,8 +21,8 @@ const Cards = () => {
               label='Birds'
               path='/animals/bird'
             />
-          </ul>
-          <ul className='card-items-s'>
+          </div>
+          <div className='card-items-s'>
             <CardItem
               src='images/the_frilled_neck_lizard.jpg'
               text='Reptiles are cold-blooded vertebrates. (Vertebrates have backbones.) They have dry skin covered with scales or bony plates and usually lay soft-shelled eggs.'
@@ -47,7 +47,7 @@ const Cards = () => {
               label='Invertebrates*'
               path='/animals/invertebrate'
             />
-          </ul>
+          </div>
         </div>
       </div>
     </section>
