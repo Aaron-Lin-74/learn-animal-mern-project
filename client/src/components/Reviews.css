@@ -39,7 +39,7 @@
   object-fit: cover;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 }
-article h4 {
+article h3 {
   text-transform: uppercase;
   color: rgb(240, 130, 58);
   margin-bottom: 0.25rem;

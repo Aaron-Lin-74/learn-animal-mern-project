@@ -25,7 +25,7 @@ const CardItem = (props) => {
           />
         </figure>
         <div className='card-item-info'>
-          <h5 className='card-item-text'>{props.text}</h5>
+          <h3 className='card-item-text'>{props.text}</h3>
         </div>
       </Link>
     </div>
