@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.0557f8d0.chunk.css",
-    "main.js": "/static/js/main.d88fe9f7.chunk.js",
-    "main.js.map": "/static/js/main.d88fe9f7.chunk.js.map",
+    "main.css": "/static/css/main.be1525e2.chunk.css",
+    "main.js": "/static/js/main.9f22e791.chunk.js",
+    "main.js.map": "/static/js/main.9f22e791.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.776c1e0d.js",
     "runtime-main.js.map": "/static/js/runtime-main.776c1e0d.js.map",
     "static/js/2.ade3949c.chunk.js": "/static/js/2.ade3949c.chunk.js",
     "static/js/2.ade3949c.chunk.js.map": "/static/js/2.ade3949c.chunk.js.map",
     "index.html": "/index.html",
-    "static/css/main.0557f8d0.chunk.css.map": "/static/css/main.0557f8d0.chunk.css.map",
+    "static/css/main.be1525e2.chunk.css.map": "/static/css/main.be1525e2.chunk.css.map",
     "static/js/2.ade3949c.chunk.js.LICENSE.txt": "/static/js/2.ade3949c.chunk.js.LICENSE.txt",
     "static/media/App.css": "/static/media/white-background.dadafedc.jpg",
     "static/media/Profile.css": "/static/media/default-profile.ca585515.jpg",
@@ -17,7 +17,7 @@
   "entrypoints": [
     "static/js/runtime-main.776c1e0d.js",
     "static/js/2.ade3949c.chunk.js",
-    "static/css/main.0557f8d0.chunk.css",
-    "static/js/main.d88fe9f7.chunk.js"
+    "static/css/main.be1525e2.chunk.css",
+    "static/js/main.9f22e791.chunk.js"
   ]
 }
