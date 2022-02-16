@@ -52,8 +52,12 @@ const AnimalList = () => {
   }, [type, currentUser, scrollTop, allTypes, navigate, location.pathname])
 
   // Specify the type of the animal and number of animals to fetch
+  // If a search term is provided, add it to the url query string
   useEffect(() => {
-    setUrl(`/api/animals/${type}?limit=${limit}&search=${searchTerm}`)
+    console.log(searchTerm)
+    searchTerm === ''
+      ? setUrl(`/api/animals/${type}?limit=${limit}`)
+      : setUrl(`/api/animals/${type}?limit=${limit}&search=${searchTerm}`)
   }, [type, limit, searchTerm])
 
   // Load extra 3 records from the server when click load more
