@@ -8,24 +8,6 @@ const logger = require('../../middleware/logger')
 const authenticateToken = require('../../middleware/authenticateToken')
 const getUser = require('../../middleware/getUser')
 
-// router.use(logger)
-
-// It is good for testing, not for production as the data is not persistent
-// const users = []
-// router.get('/', (req, res) => {
-//   res.json(users)
-// })
-// router.post('/', (req, res) => {
-//   // the problem with this simple implementation is the password is not encrypted
-//   const newUser = {
-//     name: req.body.name,
-//     password: req.body.password,
-//     email: req.body.email,
-//   }
-//   users.push(newUser)
-//   res.status(201).json({ message: 'success create' })
-// })
-
 // @route     POST api/users
 // @desc      Create a new user with name, email, and password
 // @access    Public
@@ -40,7 +22,6 @@ router.post('/', async (req, res) => {
 
     // Check the user exits or not, if yes it is a conflict
     const result = await User.findOne({ email })
-    // if (users.find((user) => user.email === req.body.email)) {
     if (result) {
       return res.status(409).json({
         message:
@@ -51,7 +32,6 @@ router.post('/', async (req, res) => {
     // Add the salt so that the same passwords could result in different hash to increase security
     // const salt = await bcrypt.genSalt()
     // const hashedPassword = await bcrypt.hash(req.body.password, salt)
-
     // We can also combine the genSalt with hash
     const hashedPassword = await bcrypt.hash(password, 10)
     const user = new User({
