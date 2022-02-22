@@ -1,8 +1,8 @@
 import React from 'react'
 import useFetch from '../../hooks/useFetch'
 import { useParams } from 'react-router-dom'
-import Loading from '../../components/Loading'
-import Button from '../../components/Button'
+import Loading from '../../components/Loading/Loading'
+import Button from '../../components/Button/Button'
 import { FcSpeaker } from 'react-icons/fc'
 import { BiArrowBack } from 'react-icons/bi'
 

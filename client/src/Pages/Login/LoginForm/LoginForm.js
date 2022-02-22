@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../../../contexts/AuthContext'
-import Button from '../../../components/Button'
+import Button from '../../../components/Button/Button'
 
 const LoginForm = () => {
   const emailRef = useRef()

@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../../../../components/Button'
+import Button from '../../../../components/Button/Button'
 import './AnimalTypeSection.css'
 import { VscFoldDown } from 'react-icons/vsc'
 import { BsStarFill } from 'react-icons/bs'

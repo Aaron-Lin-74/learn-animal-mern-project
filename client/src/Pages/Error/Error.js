@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useGlobalContext } from '../../contexts/AppContext'
-import Button from '../../components/Button'
+import Button from '../../components/Button/Button'
 
 const Error = () => {
   const { scrollTop } = useGlobalContext()

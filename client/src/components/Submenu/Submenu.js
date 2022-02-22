@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './Submenu.css'
-import { useGlobalContext } from '../contexts/AppContext'
+import { useGlobalContext } from '../../contexts/AppContext'
 import { BsStarFill } from 'react-icons/bs'
 
 const Submenu = () => {

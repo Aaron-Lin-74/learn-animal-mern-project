@@ -1,8 +1,8 @@
 import React from 'react'
 import './Gallery.css'
 import { HiPlus } from 'react-icons/hi'
-import GalleryModal from './GalleryModal'
-import { useGlobalContext } from '../contexts/AppContext'
+import GalleryModal from '../GalleryModal/GalleryModal'
+import { useGlobalContext } from '../../contexts/AppContext'
 
 const Gallery = () => {
   const {

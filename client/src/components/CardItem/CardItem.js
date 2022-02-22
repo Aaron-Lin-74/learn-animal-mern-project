@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import './CardItem.css'
-import Loading from './Loading'
+import Loading from '../Loading/Loading'
 
 const CardItem = (props) => {
   // Local state to show the loading component when image was loading

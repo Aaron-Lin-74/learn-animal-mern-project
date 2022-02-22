@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import Button from '../../../components/Button'
+import Button from '../../../components/Button/Button'
 import './Subscription.css'
 
 const Subscription = () => {

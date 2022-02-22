@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
 import { useGlobalContext } from '../../../contexts/AppContext'
 import { useAuth } from '../../../contexts/AuthContext'
-import CardItem from '../../../components/CardItem'
+import CardItem from '../../../components/CardItem/CardItem'
 import useFetch from '../../../hooks/useFetch'
-import Loading from '../../../components/Loading'
+import Loading from '../../../components/Loading/Loading'
 import './AnimalList.css'
 
 const AnimalList = () => {

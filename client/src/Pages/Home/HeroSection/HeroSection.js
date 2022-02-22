@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import Button from '../../../components/Button'
+import Button from '../../../components/Button/Button'
 import { FaPlayCircle, FaPauseCircle } from 'react-icons/fa'
 import './HeroSection.css'
 import { useGlobalContext } from '../../../contexts/AppContext'

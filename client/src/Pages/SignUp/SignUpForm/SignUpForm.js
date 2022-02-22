@@ -1,7 +1,7 @@
 import React, { useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../contexts/AuthContext'
-import Button from '../../../components/Button'
+import Button from '../../../components/Button/Button'
 
 const SignUpForm = () => {
   const userNameRef = useRef()

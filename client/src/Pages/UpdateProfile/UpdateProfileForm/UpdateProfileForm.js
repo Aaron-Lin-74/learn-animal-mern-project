@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../../contexts/AuthContext'
-import Button from '../../../components/Button'
+import Button from '../../../components/Button/Button'
 import './UpdateProfileForm.css'
 
 const UpdateProfileForm = () => {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useAuth } from '../../../contexts/AuthContext'
 import './Profile.scss'
-import Button from '../../../components/Button'
+import Button from '../../../components/Button/Button'
 import { BsFillGearFill } from 'react-icons/bs'
 
 const Profile = () => {

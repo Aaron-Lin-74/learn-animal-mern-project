@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import './GalleryModal.css'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi'
 import { FaTimes, FaPauseCircle, FaPlayCircle } from 'react-icons/fa'
-import { useGlobalContext } from '../contexts/AppContext'
+import { useGlobalContext } from '../../contexts/AppContext'
 
 const GalleryModal = () => {
   const {

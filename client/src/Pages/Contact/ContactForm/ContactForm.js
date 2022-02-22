@@ -2,7 +2,7 @@ import React, { useState, useRef } from 'react'
 import './ContactForm.scss'
 import { useNavigate } from 'react-router-dom'
 import { GrSend } from 'react-icons/gr'
-import Button from '../../../components/Button'
+import Button from '../../../components/Button/Button'
 import image from '../../../backgroundImages/default-profile.jpg'
 
 const ContactForm = () => {
