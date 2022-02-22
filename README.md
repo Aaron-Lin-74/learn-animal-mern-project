@@ -21,7 +21,7 @@ This is a MERN full-stack web application, including React based front-end appli
           to authenticate the user, get the user details after authentication, and log
           request information.
           
-## CI/CD
+## Deploy
 We use GitHub to host the source code and AWS CodePipeline to link
           GitHub repository and continuously deploy to Elastic Beanstalk which
           is a PaaS offering from AWS. It takes care of underlying
