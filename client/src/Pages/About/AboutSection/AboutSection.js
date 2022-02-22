@@ -1,5 +1,5 @@
-import React from 'react'
-import './AboutSection.scss'
+import React from 'react';
+import './AboutSection.scss';
 
 const AboutSection = () => {
   return (
@@ -41,7 +41,7 @@ const AboutSection = () => {
           request information.
         </p>
 
-        <h3 className='text-center'>CI/CD</h3>
+        <h3 className='text-center'>Deploy</h3>
         <p>
           We use GitHub to host the source code and AWS CodePipeline to link
           GitHub repository and continuously deploy to Elastic Beanstalk which
@@ -52,7 +52,7 @@ const AboutSection = () => {
         </p>
       </div>
     </section>
-  )
-}
+  );
+};
 
-export default AboutSection
+export default AboutSection;
