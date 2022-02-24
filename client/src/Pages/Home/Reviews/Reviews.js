@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi'
 import { FaQuoteRight } from 'react-icons/fa'
 import useFetch from '../../../hooks/useFetch'
@@ -15,16 +15,19 @@ const Reviews = () => {
   const [index, setIndex] = useState(0)
 
   // Handle the boundary condition for reviews index, set to loop
-  const checkNumber = (num) => {
-    const lastIndex = reviews.length - 1
-    if (num < 0) {
-      return lastIndex
-    }
-    if (num > lastIndex) {
-      return 0
-    }
-    return num
-  }
+  const checkNumber = useCallback(
+    (num) => {
+      const lastIndex = reviews.length - 1
+      if (num < 0) {
+        return lastIndex
+      }
+      if (num > lastIndex) {
+        return 0
+      }
+      return num
+    },
+    [reviews]
+  )
 
   const prevReivew = () => {
     setIndex((index) => checkNumber(index - 1))
@@ -36,10 +39,10 @@ const Reviews = () => {
   // Let the reivews keep rolling every 4 seconds
   useEffect(() => {
     const slider = setInterval(() => {
-      setIndex((index) => index + 1)
+      setIndex((index) => checkNumber(index + 1))
     }, 4000)
     return () => clearInterval(slider)
-  }, [index])
+  }, [index, checkNumber])
 
   // Set slide class based on the relation to index
   const setSlideClass = (ind) => {
