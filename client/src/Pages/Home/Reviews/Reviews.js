@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi'
 import { FaQuoteRight } from 'react-icons/fa'
 import useFetch from '../../../hooks/useFetch'
@@ -14,27 +14,35 @@ const Reviews = () => {
   // Use index local state to store the index of the current review
   const [index, setIndex] = useState(0)
 
-  // Side effect to handle the boundary condition
-  useEffect(() => {
-    if (isLoaded) {
+  // Handle the boundary condition for reviews index, set to loop
+  const checkNumber = useCallback(
+    (num) => {
       const lastIndex = reviews.length - 1
-
-      // Boundary condition, set to loop
-      if (index < 0) {
-        setIndex(lastIndex)
-      } else if (index > lastIndex) {
-        setIndex(0)
+      if (num < 0) {
+        return lastIndex
       }
-    }
-  }, [index, reviews, isLoaded])
+      if (num > lastIndex) {
+        return 0
+      }
+      return num
+    },
+    [reviews]
+  )
+
+  const prevReivew = () => {
+    setIndex((index) => checkNumber(index - 1))
+  }
+  const nextReview = () => {
+    setIndex((index) => checkNumber(index + 1))
+  }
 
   // Let the reivews keep rolling every 4 seconds
   useEffect(() => {
     const slider = setInterval(() => {
-      setIndex((index) => index + 1)
+      setIndex((index) => checkNumber(index + 1))
     }, 4000)
     return () => clearInterval(slider)
-  })
+  }, [index, checkNumber])
 
   // Set slide class based on the relation to index
   const setSlideClass = (ind) => {
@@ -48,6 +56,7 @@ const Reviews = () => {
     }
     return slideClass
   }
+
   return (
     <section className='reviews'>
       <h2 className='rev-title'>/ Reviews</h2>
@@ -58,7 +67,9 @@ const Reviews = () => {
             let slideClass = setSlideClass(ind)
             return (
               <article key={id} className={slideClass}>
-                <img src={image} alt={name} className='person-img' />
+                <figure>
+                  <img src={image} alt={name} className='person-img' />
+                </figure>
                 <h3>{name}</h3>
                 <p className='title'>{title}</p>
                 <p className='text'>{quote}</p>
@@ -67,10 +78,10 @@ const Reviews = () => {
             )
           })}
 
-        <button className='prev' onClick={() => setIndex(index - 1)}>
+        <button className='prev' onClick={prevReivew}>
           <FiChevronLeft />
         </button>
-        <button className='next' onClick={() => setIndex(index + 1)}>
+        <button className='next' onClick={nextReview}>
           <FiChevronRight />
         </button>
       </div>
