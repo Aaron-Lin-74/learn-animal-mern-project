@@ -32,7 +32,6 @@ const HeroSection = () => {
       </video>
       <div className='toggle-hero-video'>
         <Button
-          className='btns'
           buttonStyle='btn--outline'
           buttonSize='btn--medium'
           onClick={pausePlayVideo}
@@ -44,7 +43,6 @@ const HeroSection = () => {
       <p>What are you waiting for?</p>
       <div className='hero-btns'>
         <Button
-          className='btns'
           buttonStyle='btn--outline'
           buttonSize='btn--large'
           path='/sign-up'
@@ -53,7 +51,6 @@ const HeroSection = () => {
         </Button>
 
         <Button
-          className='btns'
           buttonStyle='btn--primary'
           buttonSize='btn--large'
           onClick={() =>

@@ -11,19 +11,13 @@ const STYLES = [
   'btn--scrollUp',
   'btn--submit',
   'btn--circle',
+  'btn--unStyled',
 ]
 const SIZES = ['btn--medium', 'btn--large']
 
-const Button = ({
-  children,
-  type,
-  onClick,
-  buttonStyle,
-  buttonSize,
-  path,
-  disabled,
-  display,
-}) => {
+const Button = (props) => {
+  const { children, buttonStyle, buttonSize, path } = props
+
   // If a button does not have a style, the default style is btn--primary, default size is medium
   const checkButtonStyle = STYLES.includes(buttonStyle)
     ? buttonStyle
@@ -36,34 +30,28 @@ const Button = ({
       <Link to={path}>
         <button
           className={`btns ${checkButtonStyle} ${checkButtonSize}`}
-          onClick={onClick}
-          type={type}
-          disabled={disabled}
+          {...props}
+          style={{ display: props.display }}
         >
           {children}
         </button>
       </Link>
     )
   }
-  if (buttonStyle === 'btn--scrollUp') {
+
+  // Use its own style defined in related css file
+  if (buttonStyle === 'btn--unStyled') {
     return (
-      <button
-        className={`btns ${checkButtonStyle} ${checkButtonSize}`}
-        onClick={onClick}
-        type={type}
-        disabled={disabled}
-        style={{ display: display }}
-      >
-        <ImArrowUp />
+      <button {...props} style={{ display: props.display }}>
+        {children}
       </button>
     )
   }
   return (
     <button
       className={`btns ${checkButtonStyle} ${checkButtonSize}`}
-      onClick={onClick}
-      type={type}
-      disabled={disabled}
+      style={{ display: props.display }}
+      {...props}
     >
       {children}
     </button>
