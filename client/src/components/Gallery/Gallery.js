@@ -30,7 +30,7 @@ const Gallery = () => {
                   <img
                     className='gal-img'
                     src={`/images/${image}.jpg`}
-                    alt='gallery'
+                    alt={`click to see ${image}`}
                   ></img>
                   <span className='gal-add'>
                     <HiPlus />

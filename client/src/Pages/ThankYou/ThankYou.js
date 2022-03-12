@@ -5,7 +5,7 @@ import { useParams } from 'react-router-dom'
 const ThankYou = () => {
   const { type } = useParams()
   return (
-    <div className='thank-you'>
+    <main className='thank-you'>
       <div className='thank-you-container'>
         <h1>Thank You!</h1>
         {type === 'contact' ? (
@@ -18,7 +18,7 @@ const ThankYou = () => {
           <Button path='/'>Home</Button>
         </div>
       </div>
-    </div>
+    </main>
   )
 }
 

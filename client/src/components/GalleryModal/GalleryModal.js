@@ -3,6 +3,7 @@ import './GalleryModal.css'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi'
 import { FaTimes, FaPauseCircle, FaPlayCircle } from 'react-icons/fa'
 import { useGlobalContext } from '../../contexts/AppContext'
+import Button from '../../components/Button/Button'
 
 const GalleryModal = () => {
   const {
@@ -62,25 +63,45 @@ const GalleryModal = () => {
               <img
                 className='gal-modal-img'
                 src={`/images/${image}.jpg`}
-                alt='modal'
+                alt={image}
               ></img>
             </figure>
           )
         })}
       </div>
       <div className='modal-btns'>
-        <button onClick={prevImage}>
+        <Button
+          onClick={prevImage}
+          aria-label='previous image'
+          title='previous image'
+          buttonStyle='btn--outline'
+        >
           <FiChevronLeft />
-        </button>
-        <button onClick={nextImage}>
+        </Button>
+        <Button
+          onClick={nextImage}
+          aria-label='next image'
+          title='next image'
+          buttonStyle='btn--outline'
+        >
           <FiChevronRight />
-        </button>{' '}
-        <button onClick={() => setIsPlay(!isPlay)}>
+        </Button>{' '}
+        <Button
+          onClick={() => setIsPlay(!isPlay)}
+          aria-label={isPlay ? 'pause images auto play' : 'auto play images'}
+          title={isPlay ? 'pause images auto play' : 'auto play images'}
+          buttonStyle='btn--outline'
+        >
           {isPlay ? <FaPauseCircle /> : <FaPlayCircle />}
-        </button>
-        <button onClick={closeModal}>
+        </Button>
+        <Button
+          onClick={closeModal}
+          aria-label='close modal'
+          title='close modal'
+          buttonStyle='btn--outline'
+        >
           <FaTimes />
-        </button>
+        </Button>
       </div>
     </div>
   )

@@ -25,6 +25,7 @@ import Button from './components/Button/Button'
 import SearchForm from './Pages/Animals/SearchForm/SearchForm'
 import SingleAnimal from './Pages/SingleAnimal/SingleAnimal'
 import { useGlobalContext } from './contexts/AppContext'
+import { ImArrowUp } from 'react-icons/im'
 
 function App() {
   const { scrollTop } = useGlobalContext()
@@ -101,7 +102,11 @@ function App() {
             buttonStyle='btn--scrollUp'
             onClick={scrollTop}
             display={display}
-          />
+            aria-label='back to top'
+            title='back to top'
+          >
+            <ImArrowUp />
+          </Button>
           <Footer />
         </AuthProvider>
       </Router>
