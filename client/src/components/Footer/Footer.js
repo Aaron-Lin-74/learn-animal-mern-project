@@ -6,7 +6,7 @@ import { GiTigerHead } from 'react-icons/gi'
 
 const Footer = () => {
   return (
-    <div className='footer-container'>
+    <footer className='footer-container'>
       <section className='footer-links'>
         <div className='footer-nav-items'>
           <Link className='footer-btn' to='/contact'>
@@ -71,7 +71,7 @@ const Footer = () => {
           </div>
         </div>
       </section>
-    </div>
+    </footer>
   )
 }
 

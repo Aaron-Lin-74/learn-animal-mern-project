@@ -36,8 +36,8 @@ function Navbar() {
   }
 
   return (
-    <nav className='navbar' onMouseOver={handleSubmenu}>
-      <div className='navbar-container'>
+    <header className='navbar' onMouseOver={handleSubmenu}>
+      <nav className='navbar-container'>
         <Link to='/' className='navbar-logo' onClick={closeMobileMenu}>
           Learn Animals <GiTigerHead />
         </Link>
@@ -104,8 +104,8 @@ function Navbar() {
             </li>
           )}
         </ul>
-      </div>
-    </nav>
+      </nav>
+    </header>
   )
 }
 

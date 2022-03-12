@@ -11,7 +11,7 @@ const FAQ = () => {
     <main className='faq'>
       <h1>Frequently Asked Questions (FAQs)</h1>
       <div className='faq-img-container'>
-        <img src='/images/dog.png' alt='cat' />
+        <img src='/images/dog.png' alt='question dog' />
       </div>
       <FaqAccordion />
     </main>

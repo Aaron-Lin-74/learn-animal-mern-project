@@ -37,11 +37,21 @@ const SingleAnimal = () => {
   return (
     <section className='animal-section'>
       <div className='animal-section-header'>
-        <Button path={`/animals/${animal.type}`} buttonStyle='btn--circle'>
+        <Button
+          path={`/animals/${animal.type}`}
+          buttonStyle='btn--circle'
+          aria-label='go back'
+          title='go back'
+        >
           <BiArrowBack />
         </Button>
         <h2>{name}</h2>
-        <Button onClick={() => speak(name)} buttonStyle='btn--circle'>
+        <Button
+          onClick={() => speak(name)}
+          buttonStyle='btn--circle'
+          aria-label='pronounce the name'
+          title='pronounce the name'
+        >
           <FcSpeaker />
         </Button>
       </div>

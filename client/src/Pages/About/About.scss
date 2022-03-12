@@ -1,7 +1,7 @@
 @use 'src/styles/mixins';
 @use 'src/styles/variables' as var;
 
-.about-section {
+.about-page {
   // in sass url, / refer to the src instead of public.
   background: rgba(0, 0, 0, 0.7) url(/backgroundImages/owl-wallpaper.jpg);
   background-position: left;
@@ -11,7 +11,7 @@
   color: var.$mainFontColor;
   min-height: var.$minHeight;
 
-  .about-container {
+  .about-content {
     @include mixins.flexCenter(column);
     min-width: var.$minWidth;
     max-width: 800px;
@@ -19,7 +19,7 @@
     padding: 10px 20px;
     margin: 0 auto;
     margin-left: 30%;
-    .section-title {
+    .about-title {
       font-size: 30px;
       text-align: center;
       padding: 20px 0;
@@ -35,13 +35,13 @@
     }
   }
   @media only screen and (max-width: 1200px) {
-    .about-container {
+    .about-content {
       margin-left: 45%;
       margin-right: 20px;
     }
   }
   @media only screen and (max-width: 768px) {
-    .about-container {
+    .about-content {
       backdrop-filter: blur(20px);
       margin: 0;
     }

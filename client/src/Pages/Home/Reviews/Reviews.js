@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi'
 import { FaQuoteRight } from 'react-icons/fa'
 import useFetch from '../../../hooks/useFetch'
+import Button from '../../../components/Button/Button'
 import './Reviews.css'
 
 const Reviews = () => {
@@ -68,7 +69,11 @@ const Reviews = () => {
             return (
               <article key={id} className={slideClass}>
                 <figure>
-                  <img src={image} alt={name} className='person-img' />
+                  <img
+                    src={image}
+                    alt={`profile of ${name}`}
+                    className='person-img'
+                  />
                 </figure>
                 <h3>{name}</h3>
                 <p className='title'>{title}</p>
@@ -78,12 +83,24 @@ const Reviews = () => {
             )
           })}
 
-        <button className='prev' onClick={prevReivew}>
+        <Button
+          className='prev'
+          onClick={prevReivew}
+          aria-label='previous review'
+          title='previous review'
+          buttonStyle='btn--unStyled'
+        >
           <FiChevronLeft />
-        </button>
-        <button className='next' onClick={nextReview}>
+        </Button>
+        <Button
+          className='next'
+          onClick={nextReview}
+          aria-label='next review'
+          title='next review'
+          buttonStyle='btn--unStyled'
+        >
           <FiChevronRight />
-        </button>
+        </Button>
       </div>
     </section>
   )

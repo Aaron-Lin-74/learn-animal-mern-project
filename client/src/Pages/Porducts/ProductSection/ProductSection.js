@@ -20,22 +20,22 @@ const ProductSection = () => {
             <img
               src='/images/product.jpg'
               className={setClassName(1)}
-              alt='product'
+              alt='product screenshot 1'
             />
             <img
               src='/images/product-2.jpg'
               className={setClassName(2)}
-              alt='product'
+              alt='product screenshot 2'
             />
             <img
               src='/images/product-3.jpg'
               className={setClassName(3)}
-              alt='product'
+              alt='product screenshot 3'
             />
             <img
               src='/images/product-4.jpg'
               className={setClassName(4)}
-              alt='product'
+              alt='product screenshot 4'
             />
           </div>
 

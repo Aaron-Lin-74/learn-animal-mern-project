@@ -8,7 +8,7 @@ const AllAnimals = () => {
     scrollTop()
   }, [scrollTop])
   return (
-    <div>
+    <>
       <AnimalTypeSection
         type='mammals'
         description='Mammals include humans and all other animals that are warm-blooded vertebrates with hair.'
@@ -33,7 +33,7 @@ const AllAnimals = () => {
         type='invertebrates'
         description='An invertebrate is a cold-blooded animal with no backbone.'
       />
-    </div>
+    </>
   )
 }
 

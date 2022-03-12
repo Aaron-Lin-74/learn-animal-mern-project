@@ -60,14 +60,26 @@ const ContactForm = () => {
       <div className='form-container'>
         <form className='contact-form' onSubmit={submitContactForm}>
           <h4>We'd love to hear from you!</h4>
-          <input type='text' ref={nameRef} placeholder='Name' required />
+          <input
+            type='text'
+            ref={nameRef}
+            placeholder='Name'
+            aria-label='name(required)'
+            required
+          />
           <input
             type='email'
             ref={emailRef}
             placeholder='Example@example.com'
+            aria-label='email(required)'
             required
           />
-          <textarea ref={messageRef} placeholder='Message' required />
+          <textarea
+            ref={messageRef}
+            placeholder='Message'
+            aria-label='message(required)'
+            required
+          />
           <div className='btn-wrap'>
             <Button disabled={loading} type='submit' buttonStyle='btn--submit'>
               Send <GrSend />
@@ -77,7 +89,7 @@ const ContactForm = () => {
       </div>
       <div className='image-container'>
         <div className='image-wrap'>
-          <img src={image} alt='quokka' />
+          <img src={image} alt=' ' />
         </div>
       </div>
     </div>

@@ -46,6 +46,7 @@ const Subscription = () => {
             name='email'
             className='subscription-input'
             placeholder='Your Email'
+            aria-label='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
