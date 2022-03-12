@@ -5,6 +5,7 @@ import { useAuth } from '../../../contexts/AuthContext'
 import CardItem from '../../../components/CardItem/CardItem'
 import useFetch from '../../../hooks/useFetch'
 import Loading from '../../../components/Loading/Loading'
+import Button from '../../../components/Button/Button'
 import './AnimalList.css'
 
 const AnimalList = () => {
@@ -108,12 +109,13 @@ const AnimalList = () => {
           )
         })}
       </div>
-      <button
+      <Button
         className={loadMore ? 'load-more' : 'load-more hidden'}
         onClick={handleLoadMore}
+        buttonStyle='btn--unStyled'
       >
         Load more
-      </button>
+      </Button>
     </article>
   )
 }
