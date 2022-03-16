@@ -1,14 +1,14 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import './CardItem.css';
-import Loading from '../Loading/Loading';
+import React from 'react'
+import { Link } from 'react-router-dom'
+import './CardItem.css'
+import Loading from '../Loading/Loading'
 
 const CardItem = (props) => {
   // Local state to show the loading component when image was loading
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = React.useState(true)
   const handleOnLoaded = () => {
-    setLoading(false);
-  };
+    setLoading(false)
+  }
   return (
     <div className={`card-item ${props.class ? props.class : ''}`}>
       <Link className='card-item-link' to={props.path}>
@@ -29,7 +29,7 @@ const CardItem = (props) => {
         </div>
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default CardItem;
+export default CardItem
