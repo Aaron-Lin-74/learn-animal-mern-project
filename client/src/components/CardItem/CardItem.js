@@ -20,7 +20,7 @@ const CardItem = (props) => {
           <img
             className={loading ? 'hidden' : 'card-item-img'}
             src={props.src}
-            alt='Animal'
+            alt={props.text}
             onLoad={handleOnLoaded}
           />
         </figure>
