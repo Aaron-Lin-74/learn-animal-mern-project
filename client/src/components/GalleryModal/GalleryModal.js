@@ -2,26 +2,31 @@ import React, { useState, useEffect } from 'react'
 import './GalleryModal.css'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi'
 import { FaTimes, FaPauseCircle, FaPlayCircle } from 'react-icons/fa'
-import { useGlobalContext } from '../../contexts/AppContext'
 import Button from '../../components/Button/Button'
+import { useSelector, useDispatch } from 'react-redux'
+import {
+  selectImageIndex,
+  selectIsModalOpen,
+  selectGalleryImageNames,
+  closeModal,
+} from '../../features/gallery/gallerySlice'
 
 const GalleryModal = () => {
-  const {
-    closeModal,
-    galleryImageNames: images,
-    modalIndex,
-  } = useGlobalContext()
+  const dispatch = useDispatch()
+  const imageIndex = useSelector(selectImageIndex)
+  const galleryImageNames = useSelector(selectGalleryImageNames)
+  const totalImages = galleryImageNames.length
   const [isPlay, setIsPlay] = useState(true)
-  const [index, setIndex] = useState(modalIndex)
+  const [index, setIndex] = useState(imageIndex)
 
   // Update the index to loop through images
   useEffect(() => {
     if (index < 0) {
-      setIndex(images.length - 1)
-    } else if (index > images.length - 1) {
+      setIndex(totalImages - 1)
+    } else if (index > totalImages - 1) {
       setIndex(0)
     }
-  }, [images, index])
+  }, [totalImages, index])
 
   // Set the modal images to auto play by default
   useEffect(() => {
@@ -50,12 +55,12 @@ const GalleryModal = () => {
   return (
     <div className='modal-overlay show-modal'>
       <div className='modal-container'>
-        {images.map((image, ind) => {
+        {galleryImageNames.map((image, ind) => {
           let imgClass = 'next-image'
           if (index === ind) {
             imgClass = 'current-image'
           }
-          if (ind === index - 1 || (index === 0 && ind === images.length - 1)) {
+          if (ind === index - 1 || (index === 0 && ind === totalImages - 1)) {
             imgClass = 'last-image'
           }
           return (
@@ -95,7 +100,7 @@ const GalleryModal = () => {
           {isPlay ? <FaPauseCircle /> : <FaPlayCircle />}
         </Button>
         <Button
-          onClick={closeModal}
+          onClick={() => dispatch(closeModal())}
           aria-label='close modal'
           title='close modal'
           buttonStyle='btn--outline'
