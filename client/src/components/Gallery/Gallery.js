@@ -13,6 +13,14 @@ const Gallery = () => {
   const dispatch = useDispatch()
   const isModalOpen = useSelector(selectIsModalOpen)
   const galleryImageNames = useSelector(selectGalleryImageNames)
+
+  // When the Modal opened, freeze the background page.
+  const onImageClicked = (ind) => {
+    document.body.style.setProperty('overflow', 'hidden', 'important')
+    document.getElementById('hero-video').pause()
+    dispatch(openModal(ind))
+  }
+
   return (
     <section className='gallery'>
       <div className='ani-info'>
@@ -27,7 +35,7 @@ const Gallery = () => {
               <div
                 key={ind}
                 className='gal-flex-item'
-                onClick={() => dispatch(openModal(ind))}
+                onClick={() => onImageClicked(ind)}
               >
                 <figure>
                   <img

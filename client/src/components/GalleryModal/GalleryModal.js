@@ -52,6 +52,13 @@ const GalleryModal = () => {
     setIsPlay(false)
   }
 
+  // When the Modal closed, unfreeze the background page.
+  const onCloseButtonClick = () => {
+    document.body.style.setProperty('overflow', 'visible', 'important')
+    document.getElementById('hero-video').play()
+    dispatch(closeModal())
+  }
+
   return (
     <div className='modal-overlay show-modal'>
       <div className='modal-container'>
@@ -100,7 +107,7 @@ const GalleryModal = () => {
           {isPlay ? <FaPauseCircle /> : <FaPlayCircle />}
         </Button>
         <Button
-          onClick={() => dispatch(closeModal())}
+          onClick={onCloseButtonClick}
           aria-label='close modal'
           title='close modal'
           buttonStyle='btn--outline'
