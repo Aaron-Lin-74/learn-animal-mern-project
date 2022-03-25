@@ -11,7 +11,8 @@ http://learnanimalmern-env.eba-mn3hxtuv.ap-southeast-2.elasticbeanstalk.com/prod
 ## Front-end
 
 - For the React front-end application, we use function components to create independent, resuable UI pieces, and React-Router-dom to perform the browser router.
-- We have two useContext hooks for authentication and global context. We created a custom hook useFetch to fetch the data from the server via REST API using Axios.
+- Used Redux and Redux Tookit to manage the global state of the application.
+- We created a custom hook useFetch to fetch the data from the server via REST API using Axios, and a custom hook for utility functions.
 - We used CSS to style most of the components, and start using SASS for the new components.
 
 ## Back-end
