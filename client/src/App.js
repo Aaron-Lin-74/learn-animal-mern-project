@@ -23,11 +23,11 @@ import AllAnimals from './Pages/Animals/AllAnimals/AllAnimals'
 import Button from './components/Button/Button'
 import SearchForm from './Pages/Animals/SearchForm/SearchForm'
 import SingleAnimal from './Pages/SingleAnimal/SingleAnimal'
-import { useGlobalContext } from './contexts/AppContext'
+import useUtils from './hooks/useUtils'
 import { ImArrowUp } from 'react-icons/im'
 
 function App() {
-  const { scrollTop } = useGlobalContext()
+  const { scrollTop } = useUtils()
   const [display, setDisplay] = useState('none')
 
   // Add onscroll event listener determining to show the button or not

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
-import { useGlobalContext } from '../../../contexts/AppContext'
+import useUtils from '../../../hooks/useUtils'
 import { useAuth } from '../../../contexts/AuthContext'
 import CardItem from '../../../components/CardItem/CardItem'
 import useFetch from '../../../hooks/useFetch'
@@ -27,7 +27,7 @@ const AnimalList = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
-  const { scrollTop } = useGlobalContext()
+  const { scrollTop } = useUtils()
   const allTypes = useSelector(selectAllTypes)
   const premiumTypes = useSelector(selectPremiumTypes)
   const searchTerm = useSelector(selectSearchTerm)

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { useGlobalContext } from '../../contexts/AppContext'
+import useUtils from '../../hooks/useUtils'
 import HeroSection from './HeroSection/HeroSection'
 import Cards from '../../components/Cards/Cards'
 import Gallery from '../../components/Gallery/Gallery'
@@ -8,7 +8,7 @@ import Subscription from './Subscription/Subscription'
 import '../../App.css'
 
 const Home = () => {
-  const { scrollTop } = useGlobalContext()
+  const { scrollTop } = useUtils()
   useEffect(() => {
     scrollTop()
   }, [scrollTop])
