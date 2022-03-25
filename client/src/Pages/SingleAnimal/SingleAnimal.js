@@ -5,9 +5,11 @@ import Loading from '../../components/Loading/Loading'
 import Button from '../../components/Button/Button'
 import { FcSpeaker } from 'react-icons/fc'
 import { BiArrowBack } from 'react-icons/bi'
+import useUtils from '../../hooks/useUtils'
 
 const SingleAnimal = () => {
   const { id } = useParams()
+  const { redirect } = useUtils()
   const url = `/api/animals/animal/${id}`
   const { data: animal, isLoaded } = useFetch(url)
   const { name, type, imageUrl, population, life, weight, length, link, desc } =
@@ -16,11 +18,6 @@ const SingleAnimal = () => {
   const [loading, setLoading] = React.useState(true)
   const handleOnLoaded = () => {
     setLoading(false)
-  }
-
-  // Redirect to the wiki in a new tab
-  const redirect = (link) => {
-    window.open(link, '_blank')
   }
 
   // Pronounce the name of the animal

@@ -9,15 +9,12 @@ import {
   selectAllTypesPlural,
   selectPremiumTypes,
 } from '../../../../features/animal/animalSlice'
+import useUtils from '../../../../hooks/useUtils'
 
 const AnimalTypeSection = ({ type, description }) => {
   const premiumTypes = useSelector(selectPremiumTypes)
   const allTypesPlural = useSelector(selectAllTypesPlural)
-
-  // redirect to the url on a new tab
-  const redirect = (url) => {
-    window.open(url, '_blank')
-  }
+  const { redirect } = useUtils()
 
   // Check is current section the last section
   const isLastSection =
