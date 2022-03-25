@@ -4,11 +4,20 @@ import './AnimalTypeSection.css'
 import { VscFoldDown } from 'react-icons/vsc'
 import { BsStarFill } from 'react-icons/bs'
 import { Fade } from 'react-awesome-reveal'
-
-import { useGlobalContext } from '../../../../contexts/AppContext'
+import { useSelector } from 'react-redux'
+import {
+  selectAllTypesPlural,
+  selectPremiumTypes,
+} from '../../../../features/animal/animalSlice'
 
 const AnimalTypeSection = ({ type, description }) => {
-  const { premiumTypes, redirect, allTypesPlural } = useGlobalContext()
+  const premiumTypes = useSelector(selectPremiumTypes)
+  const allTypesPlural = useSelector(selectAllTypesPlural)
+
+  // redirect to the url on a new tab
+  const redirect = (url) => {
+    window.open(url, '_blank')
+  }
 
   // Check is current section the last section
   const isLastSection =

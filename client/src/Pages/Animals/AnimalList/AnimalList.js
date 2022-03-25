@@ -7,9 +7,18 @@ import useFetch from '../../../hooks/useFetch'
 import Loading from '../../../components/Loading/Loading'
 import Button from '../../../components/Button/Button'
 import './AnimalList.css'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  selectAllTypes,
+  selectPremiumTypes,
+  selectSearchTerm,
+  selectAnimals,
+  setAnimals,
+} from '../../../features/animal/animalSlice'
 
 const AnimalList = () => {
   const { animalType } = useParams()
+  const dispatch = useDispatch()
 
   // Change the animal type from plural to single
   const type = animalType.endsWith('s') ? animalType.slice(0, -1) : animalType
@@ -18,17 +27,24 @@ const AnimalList = () => {
   const navigate = useNavigate()
   const location = useLocation()
 
+  const { scrollTop } = useGlobalContext()
+  const allTypes = useSelector(selectAllTypes)
+  const premiumTypes = useSelector(selectPremiumTypes)
+  const searchTerm = useSelector(selectSearchTerm)
+  const animals = useSelector(selectAnimals)
+
   // The number of record shown at first place
   const [limit, setLimit] = useState(6)
-
-  // The url of the backend server, defined in the AppContext
-  const { scrollTop, allTypes, searchTerm } = useGlobalContext()
   const [loadMore, setLoadMore] = useState(true)
 
   // Store the url as a state, update url when the type or limit changed
   const [url, setUrl] = useState(`/api/animals/${type}?limit=${limit}`)
   const [withToken, setWithToken] = useState(false)
-  const { data: animals, isLoaded } = useFetch(url, withToken)
+  const { data, isLoaded } = useFetch(url, withToken)
+
+  useEffect(() => {
+    dispatch(setAnimals(data))
+  }, [data])
 
   useEffect(() => {
     // Every time the animal type changes, scroll to the top
@@ -40,14 +56,14 @@ const AnimalList = () => {
       return
     }
 
-    // Only Mammal and Bird are public, the rest types need log in
-    if (!currentUser && type !== 'mammal' && type !== 'bird') {
+    // User needs to login to access the premium types
+    if (!currentUser && premiumTypes.includes(animalType)) {
       navigate('/login', { replace: true, path: location.pathname })
       return
     }
 
     // If user has logged in, access private route with token
-    if (currentUser && type !== 'mammal' && type !== 'bird') {
+    if (currentUser && premiumTypes.includes(animalType)) {
       setWithToken(true)
     }
   }, [type, currentUser, scrollTop, allTypes, navigate, location.pathname])
@@ -55,7 +71,6 @@ const AnimalList = () => {
   // Specify the type of the animal and number of animals to fetch
   // If a search term is provided, add it to the url query string
   useEffect(() => {
-    console.log(searchTerm)
     searchTerm === ''
       ? setUrl(`/api/animals/${type}?limit=${limit}`)
       : setUrl(`/api/animals/${type}?limit=${limit}&search=${searchTerm}`)

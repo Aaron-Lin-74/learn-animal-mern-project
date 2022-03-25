@@ -1,14 +1,15 @@
 import React, { useEffect } from 'react'
 import { Outlet } from 'react-router-dom'
-import { useGlobalContext } from '../../contexts/AppContext'
 import { useParams } from 'react-router-dom'
-
+import { useDispatch } from 'react-redux'
+import { setSearchTerm } from '../../features/animal/animalSlice'
 const Animals = () => {
-  // Reset the search bar to empty when routes to other animal type
-  const { setSearchTerm } = useGlobalContext()
+  const dispatch = useDispatch()
   const { animalType } = useParams()
+
+  // Reset the search bar to empty when routes to other animal type
   useEffect(() => {
-    setSearchTerm('')
+    dispatch(setSearchTerm(''))
   }, [animalType, setSearchTerm])
 
   return (
