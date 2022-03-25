@@ -1,34 +1,37 @@
-import React, { useRef, useEffect } from 'react'
+import React, { useRef, useLayoutEffect } from 'react'
 import { Link } from 'react-router-dom'
 import './Submenu.css'
-import { useGlobalContext } from '../../contexts/AppContext'
 import { BsStarFill } from 'react-icons/bs'
+import { useSelector, useDispatch } from 'react-redux'
+import {
+  closeSubmenu,
+  selectIsSubmenuOpen,
+  selectSubmenuLocation,
+} from '../../../features/menu/menuSlice'
 
-const Submenu = () => {
-  const {
-    location,
-    isSubmenuOpen,
-    closeSubmenu,
-    largeScreenMode,
-    closeMobileMenu,
-  } = useGlobalContext()
+const Submenu = (props) => {
+  const { largeScreenMode, closeMobileMenu } = props
+  const dispatch = useDispatch()
+  const isSubmenuOpen = useSelector(selectIsSubmenuOpen)
+  const submenuLocation = useSelector(selectSubmenuLocation)
   const submenuRef = useRef()
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (largeScreenMode) {
-      // Move the submenu to the bottom of the related main menu
+      // Move the submenu to the bottom of the navbar
       submenuRef.current.style.top = `90px`
-      submenuRef.current.style.left = `${location.coorX}px`
+      submenuRef.current.style.left = `${submenuLocation.coorX}px`
     } else {
-      submenuRef.current.style.top = `${location.coorY}px`
+      submenuRef.current.style.top = `${submenuLocation.coorY}px`
       submenuRef.current.style.left = '0'
     }
-  }, [location, largeScreenMode])
+  }, [largeScreenMode, submenuLocation])
+
   return (
     <aside
       className={isSubmenuOpen ? 'submenu show' : 'submenu'}
       ref={submenuRef}
-      onMouseLeave={closeSubmenu}
+      onMouseLeave={() => dispatch(closeSubmenu())}
     >
       <div
         className={`${
