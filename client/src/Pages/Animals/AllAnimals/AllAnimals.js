@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
 import AnimalTypeSection from './AnimalTypeSection/AnimalTypeSection'
-import { useGlobalContext } from '../../../contexts/AppContext'
+import useUtils from '../../../hooks/useUtils'
 
 const AllAnimals = () => {
-  const { scrollTop } = useGlobalContext()
+  const { scrollTop } = useUtils()
   useEffect(() => {
     scrollTop()
   }, [scrollTop])

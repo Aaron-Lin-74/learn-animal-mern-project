@@ -4,11 +4,17 @@ import './AnimalTypeSection.css'
 import { VscFoldDown } from 'react-icons/vsc'
 import { BsStarFill } from 'react-icons/bs'
 import { Fade } from 'react-awesome-reveal'
-
-import { useGlobalContext } from '../../../../contexts/AppContext'
+import { useSelector } from 'react-redux'
+import {
+  selectAllTypesPlural,
+  selectPremiumTypes,
+} from '../../../../features/animal/animalSlice'
+import useUtils from '../../../../hooks/useUtils'
 
 const AnimalTypeSection = ({ type, description }) => {
-  const { premiumTypes, redirect, allTypesPlural } = useGlobalContext()
+  const premiumTypes = useSelector(selectPremiumTypes)
+  const allTypesPlural = useSelector(selectAllTypesPlural)
+  const { redirect } = useUtils()
 
   // Check is current section the last section
   const isLastSection =

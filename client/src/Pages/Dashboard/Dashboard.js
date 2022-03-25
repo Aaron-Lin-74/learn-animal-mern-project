@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
-import { useGlobalContext } from '../../contexts/AppContext'
+import useUtils from '../../hooks/useUtils'
 import { useAuth } from '../../contexts/AuthContext'
 import Profile from './Profile/Profile'
 
 const Dashboard = () => {
   const { currentUser } = useAuth()
-  const { scrollTop } = useGlobalContext()
+  const { scrollTop } = useUtils()
   useEffect(() => {
     scrollTop()
   }, [scrollTop])

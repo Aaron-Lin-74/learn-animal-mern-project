@@ -1,11 +1,17 @@
 import React from 'react'
-import { useGlobalContext } from '../../../contexts/AppContext'
 import { useParams } from 'react-router-dom'
 import { FcSearch } from 'react-icons/fc'
 import './SearchForm.scss'
+import { useDispatch, useSelector } from 'react-redux'
+import {
+  selectSearchTerm,
+  setSearchTerm,
+} from '../../../features/animal/animalSlice'
 
 const SearchForm = () => {
-  const { searchTerm, setSearchTerm } = useGlobalContext()
+  const dispatch = useDispatch()
+  const searchTerm = useSelector(selectSearchTerm)
+
   // Change the animal type from plural to single
   const { animalType } = useParams()
   const type = animalType.endsWith('s') ? animalType.slice(0, -1) : animalType
@@ -25,7 +31,7 @@ const SearchForm = () => {
             name='name'
             id='name'
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
+            onChange={(e) => dispatch(setSearchTerm(e.target.value))}
           />
         </div>
       </form>

@@ -2,12 +2,12 @@ import React, { useRef, useState } from 'react'
 import Button from '../../../components/Button/Button'
 import { FaPlayCircle, FaPauseCircle } from 'react-icons/fa'
 import './HeroSection.css'
-import { useGlobalContext } from '../../../contexts/AppContext'
+import useUtils from '../../../hooks/useUtils'
 
 const HeroSection = () => {
   const videoRef = useRef()
   const [isPlay, setIsPlay] = useState(true)
-  const { redirect } = useGlobalContext()
+  const { redirect } = useUtils()
 
   // Toggle the play or pause of the hero video
   const pausePlayVideo = () => {

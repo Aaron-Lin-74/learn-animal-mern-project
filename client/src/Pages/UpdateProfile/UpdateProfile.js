@@ -1,10 +1,10 @@
 import { useEffect } from 'react'
-import { useGlobalContext } from '../../contexts/AppContext'
+import useUtils from '../../hooks/useUtils'
 import UpdateProfileForm from './UpdateProfileForm/UpdateProfileForm'
 import './UpdateProfileForm/UpdateProfileForm.css'
 
 const UpdateProfile = () => {
-  const { scrollTop } = useGlobalContext()
+  const { scrollTop } = useUtils()
   useEffect(() => {
     scrollTop()
   }, [scrollTop])

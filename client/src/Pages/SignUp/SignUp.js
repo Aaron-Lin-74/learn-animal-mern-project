@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react'
-import { useGlobalContext } from '../../contexts/AppContext'
+import useUtils from '../../hooks/useUtils'
 import SignUpForm from './SignUpForm/SignUpForm'
 import './SignUpForm/SignUpForm.scss'
 
 const SignUp = () => {
-  const { scrollTop } = useGlobalContext()
+  const { scrollTop } = useUtils()
   useEffect(() => {
     scrollTop()
   }, [scrollTop])

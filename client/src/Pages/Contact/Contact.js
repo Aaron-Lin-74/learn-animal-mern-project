@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { useGlobalContext } from '../../contexts/AppContext'
+import useUtils from '../../hooks/useUtils'
 import ContactForm from './ContactForm/ContactForm'
 
 const Contact = () => {
-  const { scrollTop } = useGlobalContext()
+  const { scrollTop } = useUtils()
   useEffect(() => {
     scrollTop()
   }, [scrollTop])

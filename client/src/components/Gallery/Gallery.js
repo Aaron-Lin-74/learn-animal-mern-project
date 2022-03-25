@@ -2,14 +2,25 @@ import React from 'react'
 import './Gallery.css'
 import { HiPlus } from 'react-icons/hi'
 import GalleryModal from '../GalleryModal/GalleryModal'
-import { useGlobalContext } from '../../contexts/AppContext'
+import { useSelector, useDispatch } from 'react-redux'
+import {
+  selectIsModalOpen,
+  selectGalleryImageNames,
+  openModal,
+} from '../../features/gallery/gallerySlice'
 
 const Gallery = () => {
-  const {
-    isModalOpen,
-    openModal,
-    galleryImageNames: images,
-  } = useGlobalContext()
+  const dispatch = useDispatch()
+  const isModalOpen = useSelector(selectIsModalOpen)
+  const galleryImageNames = useSelector(selectGalleryImageNames)
+
+  // When the Modal opened, freeze the background page.
+  const onImageClicked = (ind) => {
+    document.body.style.setProperty('overflow', 'hidden', 'important')
+    document.getElementById('hero-video').pause()
+    dispatch(openModal(ind))
+  }
+
   return (
     <section className='gallery'>
       <div className='ani-info'>
@@ -19,12 +30,12 @@ const Gallery = () => {
       </div>
       <div className='gallery-wrapper'>
         <div className='gallery-flex'>
-          {images.map((image, ind) => {
+          {galleryImageNames.map((image, ind) => {
             return (
               <div
                 key={ind}
                 className='gal-flex-item'
-                onClick={() => openModal(ind)}
+                onClick={() => onImageClicked(ind)}
               >
                 <figure>
                   <img

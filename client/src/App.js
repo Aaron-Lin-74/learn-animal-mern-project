@@ -7,7 +7,6 @@ import Home from './Pages/Home/Home'
 import Products from './Pages/Porducts/Products'
 import SignUp from './Pages/SignUp/SignUp'
 import Login from './Pages/Login/Login'
-import Submenu from './components/Submenu/Submenu'
 import Error from './Pages/Error/Error'
 import Animals from './Pages/Animals/Animals'
 import Dashboard from './Pages/Dashboard/Dashboard'
@@ -24,11 +23,11 @@ import AllAnimals from './Pages/Animals/AllAnimals/AllAnimals'
 import Button from './components/Button/Button'
 import SearchForm from './Pages/Animals/SearchForm/SearchForm'
 import SingleAnimal from './Pages/SingleAnimal/SingleAnimal'
-import { useGlobalContext } from './contexts/AppContext'
+import useUtils from './hooks/useUtils'
 import { ImArrowUp } from 'react-icons/im'
 
 function App() {
-  const { scrollTop } = useGlobalContext()
+  const { scrollTop } = useUtils()
   const [display, setDisplay] = useState('none')
 
   // Add onscroll event listener determining to show the button or not
@@ -56,7 +55,6 @@ function App() {
       <Router>
         <AuthProvider>
           <Navbar />
-          <Submenu />
           <Routes>
             <Route path='/' element={<Home />}></Route>
             <Route path='/products' element={<Products />}></Route>

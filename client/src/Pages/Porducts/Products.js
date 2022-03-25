@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { useGlobalContext } from '../../contexts/AppContext'
+import useUtils from '../../hooks/useUtils'
 import ProductSection from './ProductSection/ProductSection'
 
 const Products = () => {
-  const { scrollTop } = useGlobalContext()
+  const { scrollTop } = useUtils()
   useEffect(() => {
     scrollTop()
   }, [scrollTop])
