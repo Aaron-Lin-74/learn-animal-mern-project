@@ -35,5 +35,10 @@ export const selectAllTypesPlural = (state) => state.animal.allTypesPlural
 export const selectPremiumTypes = (state) => state.animal.premiumTypes
 export const selectSearchTerm = (state) => state.animal.searchTerm
 export const selectAnimals = (state) => state.animal.animals
+export const selectAnimalById = (state, id) => {
+  return state.animal.animals.filter((animal) => {
+    return animal._id === id
+  })[0]
+}
 
 export default animalSlice.reducer

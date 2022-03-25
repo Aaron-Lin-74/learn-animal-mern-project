@@ -1,19 +1,20 @@
 import React from 'react'
-import useFetch from '../../hooks/useFetch'
 import { useParams } from 'react-router-dom'
 import Loading from '../../components/Loading/Loading'
 import Button from '../../components/Button/Button'
 import { FcSpeaker } from 'react-icons/fc'
 import { BiArrowBack } from 'react-icons/bi'
 import useUtils from '../../hooks/useUtils'
+import { selectAnimalById } from '../../features/animal/animalSlice'
+import { useSelector } from 'react-redux'
 
 const SingleAnimal = () => {
   const { id } = useParams()
   const { redirect } = useUtils()
-  const url = `/api/animals/animal/${id}`
-  const { data: animal, isLoaded } = useFetch(url)
+  const animal = useSelector((state) => selectAnimalById(state, id))
   const { name, type, imageUrl, population, life, weight, length, link, desc } =
     animal
+
   // Local state to show the loading component when image was loading
   const [loading, setLoading] = React.useState(true)
   const handleOnLoaded = () => {
@@ -27,10 +28,6 @@ const SingleAnimal = () => {
     speechSynthesis.speak(utterance)
   }
 
-  // Show the loading component before the data is fetched
-  if (!isLoaded) {
-    return <Loading />
-  }
   return (
     <section className='animal-section'>
       <div className='animal-section-header'>
