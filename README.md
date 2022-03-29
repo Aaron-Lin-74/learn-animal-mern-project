@@ -6,7 +6,7 @@ This is a MERN full-stack web application, including React based front-end appli
 
 The live application is hosted using AWS Elastic Beanstalk, please find the link below:
 
-http://learnanimalmern-env.eba-mn3hxtuv.ap-southeast-2.elasticbeanstalk.com/products
+http://learnanimalmern-env.eba-mn3hxtuv.ap-southeast-2.elasticbeanstalk.com
 
 ## Front-end
 
