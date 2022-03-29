@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { faqs } from '../../../faqs'
+import { faqs } from '../../../constants/faqs'
 import FaqCard from './FaqCard/FaqCard'
 import './FaqAccordion.css'
 
