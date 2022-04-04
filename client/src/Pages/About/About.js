@@ -25,7 +25,7 @@ const About = () => {
           stores user data, animal data and subscription emails.
         </p>
 
-        <h3 className='text-center'>Front-end</h3>
+        <h2 className='text-center'>Front-end</h2>
         <p>
           For the React front-end application, we use function components to
           create independent, resuable UI pieces, and React-Router-dom to
@@ -36,7 +36,7 @@ const About = () => {
           components.
         </p>
 
-        <h3 className='text-center'>Back-end</h3>
+        <h2 className='text-center'>Back-end</h2>
         <p>
           We developed a node.js server using Express framework so the front-end
           web application can subscribe emails, sign up / login user, and fetch
@@ -47,7 +47,7 @@ const About = () => {
           request information.
         </p>
 
-        <h3 className='text-center'>Deploy</h3>
+        <h2 className='text-center'>Deploy</h2>
         <p>
           We use GitHub to host the source code and AWS CodePipeline to link
           GitHub repository and continuously deploy to Elastic Beanstalk which
