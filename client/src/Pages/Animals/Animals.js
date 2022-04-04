@@ -10,7 +10,7 @@ const Animals = () => {
   // Reset the search bar to empty when routes to other animal type
   useEffect(() => {
     dispatch(setSearchTerm(''))
-  }, [animalType, setSearchTerm])
+  }, [animalType, dispatch])
 
   return (
     <main className='animals'>
