@@ -50,7 +50,7 @@ const SignUpForm = () => {
     <>
       {error && <div className='sign-up-error'>{error}</div>}
       <form className='sign-up-form' onSubmit={handleSubmit}>
-        <h3>Sign Up</h3>
+        <h1>Sign Up</h1>
         <label htmlFor='sign-up-username'>User Name</label>
         <input
           id='sign-up-username'
