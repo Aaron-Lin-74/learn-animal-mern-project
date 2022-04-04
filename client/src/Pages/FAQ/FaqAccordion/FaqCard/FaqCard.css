@@ -14,12 +14,12 @@
   background-color: lightgray;
 }
 
-.card-header.select h3 {
+.card-header.select h2 {
   color: #1f1f1f;
   font-weight: 700;
 }
 
-.card-header h3 {
+.card-header h2 {
   font-size: 0.875rem;
   font-weight: 500;
   outline: none;

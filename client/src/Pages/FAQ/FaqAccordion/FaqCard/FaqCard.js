@@ -23,12 +23,12 @@ const FaqCard = ({ question, answer, setActiveIdx, activeIdx, index }) => {
           }
         }}
       >
-        <h3>
+        <h2>
           {question}{' '}
           <span className='arrow-icon'>
             {toggle ? <BiChevronUp /> : <BiChevronDown />}{' '}
           </span>
-        </h3>
+        </h2>
       </div>
 
       <div className={toggle ? 'collapse show' : 'collapse'}>{answer}</div>
