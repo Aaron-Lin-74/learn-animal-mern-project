@@ -63,7 +63,7 @@ const UpdateProfileForm = () => {
     <>
       {error && <div className='update-profile-error'>{error}</div>}
       <form className='update-profile-form' onSubmit={handleSubmit}>
-        <h3>Update Profile</h3>
+        <h1>Update Profile</h1>
         <label htmlFor='update-profile-username'>User Name</label>
         <input
           id='update-profile-username'

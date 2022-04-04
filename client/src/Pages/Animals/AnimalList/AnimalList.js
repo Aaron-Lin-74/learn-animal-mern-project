@@ -44,7 +44,7 @@ const AnimalList = () => {
 
   useEffect(() => {
     dispatch(setAnimals(data))
-  }, [data])
+  }, [dispatch, data])
 
   useEffect(() => {
     // Every time the animal type changes, scroll to the top
@@ -66,7 +66,16 @@ const AnimalList = () => {
     if (currentUser && premiumTypes.includes(animalType)) {
       setWithToken(true)
     }
-  }, [type, currentUser, scrollTop, allTypes, navigate, location.pathname])
+  }, [
+    type,
+    currentUser,
+    scrollTop,
+    allTypes,
+    navigate,
+    location.pathname,
+    animalType,
+    premiumTypes,
+  ])
 
   // Specify the type of the animal and number of animals to fetch
   // If a search term is provided, add it to the url query string

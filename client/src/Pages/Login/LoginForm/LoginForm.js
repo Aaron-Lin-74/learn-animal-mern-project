@@ -46,7 +46,7 @@ const LoginForm = () => {
       {error && <div className='login-error'>{error}</div>}
 
       <form className='login-form' onSubmit={handleSubmit}>
-        <h3>Log In</h3>
+        <h1>Log In</h1>
         <label htmlFor='login-email'>Email</label>
         <input
           id='login-email'
