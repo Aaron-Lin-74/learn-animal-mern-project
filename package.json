@@ -18,6 +18,14 @@
     "bcrypt"
   ],
   "author": "Aaron Lin",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Aaron-Lin-74/learn-animal-mern-project.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Aaron-Lin-74/learn-animal-mern-project.git/issues"
+  },
+  "homepage":"http://learnanimalmern-env.eba-mn3hxtuv.ap-southeast-2.elasticbeanstalk.com",
   "license": "MIT",
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",
