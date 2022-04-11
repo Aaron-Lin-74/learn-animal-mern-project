@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom'
 import { FaTimes, FaBars } from 'react-icons/fa'
 import { GiTigerHead } from 'react-icons/gi'
 import { TiArrowSortedDown, TiArrowSortedUp } from 'react-icons/ti'
+import { useDispatch, useSelector } from 'react-redux'
 import { useAuth } from '../../contexts/AuthContext'
 import Submenu from './Submenu/Submenu'
-import { useDispatch, useSelector } from 'react-redux'
 import {
   openSubmenu,
   closeSubmenu,
@@ -89,11 +89,21 @@ function Navbar() {
 
   return (
     <header className='navbar'>
-      <nav className='navbar-container' onMouseOver={handleMouseOverNavbar}>
+      <nav
+        className='navbar-container'
+        onFocus={handleMouseOverNavbar}
+        onMouseOver={handleMouseOverNavbar}
+      >
         <Link to='/' className='navbar-logo' onClick={handleCloseMobileMenu}>
           Learn Animals <GiTigerHead />
         </Link>
-        <div className='menu-icon' onClick={handleToggleMobileMenu}>
+        <div
+          className='menu-icon'
+          onClick={handleToggleMobileMenu}
+          onKeyDown={handleToggleMobileMenu}
+          tabIndex={0}
+          role='button'
+        >
           {isMobileMenuClicked ? <FaTimes /> : <FaBars />}
         </div>
         <ul className={isMobileMenuClicked ? 'nav-menu active' : 'nav-menu'}>
@@ -144,7 +154,13 @@ function Navbar() {
           )}
           {currentUser ? (
             <li>
-              <span className='nav-links-sign-up' onClick={logout}>
+              <span
+                className='nav-links-sign-up'
+                onClick={logout}
+                onKeyDown={logout}
+                role='button'
+                tabIndex={0}
+              >
                 Log out
               </span>
             </li>

@@ -1,16 +1,15 @@
 import React, { useState } from 'react'
 import './ProductSection.scss'
 
-const ProductSection = () => {
+function ProductSection() {
   const [index, setIndex] = useState(1)
 
   // Used to dynamicaly change the image class name
   const setClassName = (key) => {
     if (key === index) {
       return 'display'
-    } else {
-      return 'hide'
     }
+    return 'hide'
   }
   return (
     <section className='product-section'>
@@ -40,16 +39,40 @@ const ProductSection = () => {
           </div>
 
           <div className='img-select'>
-            <div className='img-item' onClick={() => setIndex(1)}>
+            <div
+              className='img-item'
+              onClick={() => setIndex(1)}
+              onKeyDown={() => setIndex(1)}
+              role='button'
+              tabIndex={0}
+            >
               <img src='/images/product.jpg' alt='product' />
             </div>
-            <div className='img-item' onClick={() => setIndex(2)}>
+            <div
+              className='img-item'
+              onClick={() => setIndex(2)}
+              onKeyDown={() => setIndex(2)}
+              role='button'
+              tabIndex={0}
+            >
               <img src='/images/product-2.jpg' alt='product' />
             </div>
-            <div className='img-item' onClick={() => setIndex(3)}>
+            <div
+              className='img-item'
+              onClick={() => setIndex(3)}
+              onKeyDown={() => setIndex(3)}
+              role='button'
+              tabIndex={0}
+            >
               <img src='/images/product-3.jpg' alt='product' />
             </div>
-            <div className='img-item' onClick={() => setIndex(4)}>
+            <div
+              className='img-item'
+              onClick={() => setIndex(4)}
+              onKeyDown={() => setIndex(4)}
+              role='button'
+              tabIndex={0}
+            >
               <img src='/images/product-4.jpg' alt='product' />
             </div>
           </div>
