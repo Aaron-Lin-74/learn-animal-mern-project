@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { BiChevronDown, BiChevronUp } from 'react-icons/bi'
 import './FaqCard.css'
 
-const FaqCard = ({ question, answer, setActiveIdx, activeIdx, index }) => {
+function FaqCard({ question, answer, setActiveIdx, activeIdx, index }) {
   // Whether the active question index is the current question index
   const [toggle, setToggle] = useState(index === activeIdx)
 
@@ -11,17 +11,21 @@ const FaqCard = ({ question, answer, setActiveIdx, activeIdx, index }) => {
     setToggle(index === activeIdx)
   }, [index, activeIdx])
 
+  const handleClick = () => {
+    if (index === activeIdx) {
+      setToggle(!toggle)
+    } else {
+      setActiveIdx(index)
+    }
+  }
   return (
     <div className='faq-card'>
       <div
         className={toggle ? 'card-header select' : 'card-header'}
-        onClick={() => {
-          if (index === activeIdx) {
-            setToggle(!toggle)
-          } else {
-            setActiveIdx(index)
-          }
-        }}
+        onClick={handleClick}
+        onKeyDown={handleClick}
+        role='button'
+        tabIndex={0}
       >
         <h2>
           {question}{' '}
