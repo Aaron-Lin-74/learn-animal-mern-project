@@ -3,7 +3,7 @@ import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../../../contexts/AuthContext'
 import Button from '../../../components/Button/Button'
 
-const LoginForm = () => {
+function LoginForm() {
   const emailRef = useRef()
   const passwordRef = useRef()
 
@@ -14,6 +14,10 @@ const LoginForm = () => {
   const { login } = useAuth()
   const { state } = useLocation
 
+  function showError(message) {
+    setError(message)
+    setTimeout(() => setError(''), 3000)
+  }
   async function handleSubmit(e) {
     e.preventDefault()
     try {
@@ -36,36 +40,34 @@ const LoginForm = () => {
     }
   }
 
-  function showError(message) {
-    setError(message)
-    setTimeout(() => setError(''), 3000)
-  }
-
   return (
     <>
       {error && <div className='login-error'>{error}</div>}
 
       <form className='login-form' onSubmit={handleSubmit}>
         <h1>Log In</h1>
-        <label htmlFor='login-email'>Email</label>
-        <input
-          id='login-email'
-          type='email'
-          placeholder='example@example.com'
-          ref={emailRef}
-          required
-        />
-
-        <label htmlFor='login-password'>Password</label>
-        <input
-          id='login-password'
-          type='password'
-          placeholder='password'
-          ref={passwordRef}
-          required
-        />
+        <label htmlFor='login-email'>
+          Email
+          <input
+            id='login-email'
+            type='email'
+            placeholder='example@example.com'
+            ref={emailRef}
+            required
+          />
+        </label>
+        <label htmlFor='login-password'>
+          Password
+          <input
+            id='login-password'
+            type='password'
+            placeholder='password'
+            ref={passwordRef}
+            required
+          />
+        </label>
         <div className='btn-wrap'>
-          <Button disabled={loading} type='submit' buttonStyle='btn--submit'>
+          <Button disabled={loading} type='submit' buttonstyle='btn--submit'>
             Log In
           </Button>
         </div>
