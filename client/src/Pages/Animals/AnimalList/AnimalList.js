@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate, useLocation } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
 import useUtils from '../../../hooks/useUtils'
 import { useAuth } from '../../../contexts/AuthContext'
 import CardItem from '../../../components/CardItem/CardItem'
@@ -7,7 +8,6 @@ import useFetch from '../../../hooks/useFetch'
 import Loading from '../../../components/Loading/Loading'
 import Button from '../../../components/Button/Button'
 import './AnimalList.css'
-import { useDispatch, useSelector } from 'react-redux'
 import {
   selectAllTypes,
   selectPremiumTypes,
@@ -16,7 +16,7 @@ import {
   setAnimals,
 } from '../../../features/animal/animalSlice'
 
-const AnimalList = () => {
+function AnimalList() {
   const { animalType } = useParams()
   const dispatch = useDispatch()
 
@@ -40,11 +40,11 @@ const AnimalList = () => {
   // Store the url as a state, update url when the type or limit changed
   const [url, setUrl] = useState(`/api/animals/${type}?limit=${limit}`)
   const [withToken, setWithToken] = useState(false)
-  const { data, isLoaded } = useFetch(url, withToken)
+  const { fetchedData, isLoaded } = useFetch(url, withToken)
 
   useEffect(() => {
-    dispatch(setAnimals(data))
-  }, [dispatch, data])
+    dispatch(setAnimals(fetchedData))
+  }, [dispatch, fetchedData])
 
   useEffect(() => {
     // Every time the animal type changes, scroll to the top
@@ -80,14 +80,16 @@ const AnimalList = () => {
   // Specify the type of the animal and number of animals to fetch
   // If a search term is provided, add it to the url query string
   useEffect(() => {
-    searchTerm === ''
-      ? setUrl(`/api/animals/${type}?limit=${limit}`)
-      : setUrl(`/api/animals/${type}?limit=${limit}&search=${searchTerm}`)
+    if (searchTerm === '') {
+      setUrl(`/api/animals/${type}?limit=${limit}`)
+    } else {
+      setUrl(`/api/animals/${type}?limit=${limit}&search=${searchTerm}`)
+    }
   }, [type, limit, searchTerm])
 
   // Load extra 3 records from the server when click load more
   const handleLoadMore = () => {
-    setLimit((limit) => limit + 3)
+    setLimit((prevLimit) => prevLimit + 3)
     if (limit + 3 > animals.length) {
       setLoadMore(false)
     }
@@ -128,7 +130,7 @@ const AnimalList = () => {
               src={animal.imageUrl}
               label={animal.type}
               text={animal.name}
-              class='animal'
+              className='animal'
             />
           )
         })}
@@ -136,7 +138,7 @@ const AnimalList = () => {
       <Button
         className={loadMore ? 'load-more' : 'load-more hidden'}
         onClick={handleLoadMore}
-        buttonStyle='btn--unStyled'
+        buttonstyle='btn--unStyled'
       >
         Load more
       </Button>

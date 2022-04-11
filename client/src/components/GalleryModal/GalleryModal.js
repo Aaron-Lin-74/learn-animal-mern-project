@@ -2,16 +2,15 @@ import React, { useState, useEffect } from 'react'
 import './GalleryModal.css'
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi'
 import { FaTimes, FaPauseCircle, FaPlayCircle } from 'react-icons/fa'
-import Button from '../../components/Button/Button'
 import { useSelector, useDispatch } from 'react-redux'
+import Button from '../Button/Button'
 import {
   selectImageIndex,
-  selectIsModalOpen,
   selectGalleryImageNames,
   closeModal,
 } from '../../features/gallery/gallerySlice'
 
-const GalleryModal = () => {
+function GalleryModal() {
   const dispatch = useDispatch()
   const imageIndex = useSelector(selectImageIndex)
   const galleryImageNames = useSelector(selectGalleryImageNames)
@@ -33,22 +32,22 @@ const GalleryModal = () => {
     let indexInterval
     if (isPlay) {
       indexInterval = setInterval(() => {
-        setIndex((index) => index + 1)
+        setIndex((preIndex) => preIndex + 1)
       }, 4000)
     } else {
       clearInterval(indexInterval)
     }
     return () => clearInterval(indexInterval)
-  }, [isPlay])
+  }, [index, isPlay])
 
   // When click the previous button, pause the image auto play
   const prevImage = () => {
-    setIndex((index) => index - 1)
+    setIndex((preIndex) => preIndex - 1)
     setIsPlay(false)
   }
   // When click the next button, pause the image auto play
   const nextImage = () => {
-    setIndex((index) => index + 1)
+    setIndex((preIndex) => preIndex + 1)
     setIsPlay(false)
   }
 
@@ -76,7 +75,7 @@ const GalleryModal = () => {
                 className='gal-modal-img'
                 src={`/images/${image}.jpg`}
                 alt={image}
-              ></img>
+              />
             </figure>
           )
         })}
@@ -86,7 +85,7 @@ const GalleryModal = () => {
           onClick={prevImage}
           aria-label='previous image'
           title='previous image'
-          buttonStyle='btn--outline'
+          buttonstyle='btn--outline'
         >
           <FiChevronLeft />
         </Button>
@@ -94,7 +93,7 @@ const GalleryModal = () => {
           onClick={nextImage}
           aria-label='next image'
           title='next image'
-          buttonStyle='btn--outline'
+          buttonstyle='btn--outline'
         >
           <FiChevronRight />
         </Button>{' '}
@@ -102,7 +101,7 @@ const GalleryModal = () => {
           onClick={() => setIsPlay(!isPlay)}
           aria-label={isPlay ? 'pause images auto play' : 'auto play images'}
           title={isPlay ? 'pause images auto play' : 'auto play images'}
-          buttonStyle='btn--outline'
+          buttonstyle='btn--outline'
         >
           {isPlay ? <FaPauseCircle /> : <FaPlayCircle />}
         </Button>
@@ -110,7 +109,7 @@ const GalleryModal = () => {
           onClick={onCloseButtonClick}
           aria-label='close modal'
           title='close modal'
-          buttonStyle='btn--outline'
+          buttonstyle='btn--outline'
         >
           <FaTimes />
         </Button>

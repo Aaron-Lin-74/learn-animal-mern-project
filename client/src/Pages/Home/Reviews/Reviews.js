@@ -5,10 +5,10 @@ import useFetch from '../../../hooks/useFetch'
 import Button from '../../../components/Button/Button'
 import './Reviews.css'
 
-const Reviews = () => {
+function Reviews() {
   // Use custom hook to replace the fetch reviews, to reuse the functionality
   const {
-    data: { reviews },
+    fetchedData: { reviews },
     isLoaded,
   } = useFetch('/api/reviews')
 
@@ -31,16 +31,16 @@ const Reviews = () => {
   )
 
   const prevReivew = () => {
-    setIndex((index) => checkNumber(index - 1))
+    setIndex((preIndex) => checkNumber(preIndex - 1))
   }
   const nextReview = () => {
-    setIndex((index) => checkNumber(index + 1))
+    setIndex((preIndex) => checkNumber(preIndex + 1))
   }
 
   // Let the reivews keep rolling every 4 seconds
   useEffect(() => {
     const slider = setInterval(() => {
-      setIndex((index) => checkNumber(index + 1))
+      setIndex((preIndex) => checkNumber(preIndex + 1))
     }, 4000)
     return () => clearInterval(slider)
   }, [index, checkNumber])
@@ -65,7 +65,7 @@ const Reviews = () => {
         {isLoaded &&
           reviews.map((review, ind) => {
             const { id, image, name, title, quote } = review
-            let slideClass = setSlideClass(ind)
+            const slideClass = setSlideClass(ind)
             return (
               <article key={id} className={slideClass}>
                 <figure>
@@ -88,7 +88,7 @@ const Reviews = () => {
           onClick={prevReivew}
           aria-label='previous review'
           title='previous review'
-          buttonStyle='btn--unStyled'
+          buttonstyle='btn--unStyled'
         >
           <FiChevronLeft />
         </Button>
@@ -97,7 +97,7 @@ const Reviews = () => {
           onClick={nextReview}
           aria-label='next review'
           title='next review'
-          buttonStyle='btn--unStyled'
+          buttonstyle='btn--unStyled'
         >
           <FiChevronRight />
         </Button>
