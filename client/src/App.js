@@ -1,6 +1,7 @@
 import './App.css'
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { ImArrowUp } from 'react-icons/im'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import Home from './Pages/Home/Home'
@@ -24,20 +25,10 @@ import Button from './components/Button/Button'
 import SearchForm from './Pages/Animals/SearchForm/SearchForm'
 import SingleAnimal from './Pages/SingleAnimal/SingleAnimal'
 import useUtils from './hooks/useUtils'
-import { ImArrowUp } from 'react-icons/im'
 
 function App() {
   const { scrollTop } = useUtils()
   const [display, setDisplay] = useState('none')
-
-  // Add onscroll event listener determining to show the button or not
-  useEffect(() => {
-    scrollTop()
-    window.addEventListener('scroll', showScrollBtn)
-
-    // Always use a cleanup function to avoid the memery leak and overwritten issue
-    return () => window.removeEventListener('scroll', showScrollBtn)
-  }, [scrollTop])
 
   // When the user scrolls down 20px from the top of the document, show the button
   const showScrollBtn = () => {
@@ -50,65 +41,73 @@ function App() {
       setDisplay('none')
     }
   }
+
+  // Add onscroll event listener determining to show the button or not
+  useEffect(() => {
+    scrollTop()
+    window.addEventListener('scroll', showScrollBtn)
+
+    // Always use a cleanup function to avoid the memery leak and overwritten issue
+    return () => window.removeEventListener('scroll', showScrollBtn)
+  }, [scrollTop])
+
   return (
-    <>
-      <Router>
-        <AuthProvider>
-          <Navbar />
-          <Routes>
-            <Route path='/' element={<Home />}></Route>
-            <Route path='/products' element={<Products />}></Route>
-            <Route path='/sign-up' element={<SignUp />}></Route>
-            <Route path='/login' element={<Login />}></Route>
-            <Route path='/animals' element={<Animals />}>
-              <Route index element={<AllAnimals />}></Route>
-              <Route
-                path=':animalType'
-                element={
-                  <>
-                    <SearchForm />
-                    <AnimalList />
-                  </>
-                }
-              ></Route>
-            </Route>
-            <Route path='/animal/:id' element={<SingleAnimal />}></Route>
+    <Router>
+      <AuthProvider>
+        <Navbar />
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/products' element={<Products />} />
+          <Route path='/sign-up' element={<SignUp />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/animals' element={<Animals />}>
+            <Route index element={<AllAnimals />} />
             <Route
-              path='/dashboard'
+              path=':animalType'
               element={
-                <RequireAuth>
-                  <Dashboard />
-                </RequireAuth>
+                <>
+                  <SearchForm />
+                  <AnimalList />
+                </>
               }
-            ></Route>
-            <Route
-              path='/update-profile'
-              element={
-                <RequireAuth>
-                  <UpdateProfile />
-                </RequireAuth>
-              }
-            ></Route>
-            <Route path='/contact' element={<Contact />}></Route>
-            <Route path='/about' element={<About />}></Route>
-            <Route path='/faq' element={<FAQ />}></Route>
-            <Route path='/terms-of-use' element={<TermsOfUse />}></Route>
-            <Route path='/thank-you/:type' element={<ThankYou />}></Route>
-            <Route path='*' element={<Error />}></Route>
-          </Routes>
-          <Button
-            buttonStyle='btn--scrollUp'
-            onClick={scrollTop}
-            display={display}
-            aria-label='back to top'
-            title='back to top'
-          >
-            <ImArrowUp />
-          </Button>
-          <Footer />
-        </AuthProvider>
-      </Router>
-    </>
+            />
+          </Route>
+          <Route path='/animal/:id' element={<SingleAnimal />} />
+          <Route
+            path='/dashboard'
+            element={
+              <RequireAuth>
+                <Dashboard />
+              </RequireAuth>
+            }
+          />
+          <Route
+            path='/update-profile'
+            element={
+              <RequireAuth>
+                <UpdateProfile />
+              </RequireAuth>
+            }
+          />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/faq' element={<FAQ />} />
+          <Route path='/terms-of-use' element={<TermsOfUse />} />
+          <Route path='/thank-you/:type' element={<ThankYou />} />
+          <Route path='*' element={<Error />} />
+        </Routes>
+        <Button
+          buttonstyle='btn--scrollUp'
+          onClick={scrollTop}
+          display={display}
+          aria-label='back to top'
+          title='back to top'
+        >
+          <ImArrowUp />
+        </Button>
+        <Footer />
+      </AuthProvider>
+    </Router>
   )
 }
 

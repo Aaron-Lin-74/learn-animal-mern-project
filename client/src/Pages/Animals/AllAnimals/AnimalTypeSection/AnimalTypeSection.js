@@ -1,17 +1,17 @@
 import React from 'react'
-import Button from '../../../../components/Button/Button'
+import { useSelector } from 'react-redux'
 import './AnimalTypeSection.css'
 import { VscFoldDown } from 'react-icons/vsc'
 import { BsStarFill } from 'react-icons/bs'
 import { Fade } from 'react-awesome-reveal'
-import { useSelector } from 'react-redux'
 import {
   selectAllTypesPlural,
   selectPremiumTypes,
 } from '../../../../features/animal/animalSlice'
 import useUtils from '../../../../hooks/useUtils'
+import Button from '../../../../components/Button/Button'
 
-const AnimalTypeSection = ({ type, description }) => {
+function AnimalTypeSection({ type, description }) {
   const premiumTypes = useSelector(selectPremiumTypes)
   const allTypesPlural = useSelector(selectAllTypesPlural)
   const { redirect } = useUtils()
@@ -39,7 +39,7 @@ const AnimalTypeSection = ({ type, description }) => {
       </Fade>
       <Fade direction='left'>
         <div className='animal-type-btns-container'>
-          <Button path={`/animals/${type}`} buttonStyle='btn--outline'>
+          <Button path={`/animals/${type}`} buttonstyle='btn--outline'>
             Explore More{premiumTypes.includes(type) && <BsStarFill />}
           </Button>
           <Button

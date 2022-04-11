@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import useUtils from '../../hooks/useUtils'
 import './About.scss'
 
-const About = () => {
+function About() {
   const { scrollTop } = useUtils()
   useEffect(() => {
     scrollTop()

@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import useUtils from '../../hooks/useUtils'
 import FaqAccordion from './FaqAccordion/FaqAccordion'
 
-const FAQ = () => {
+function FAQ() {
   const { scrollTop } = useUtils()
   useEffect(() => {
     scrollTop()

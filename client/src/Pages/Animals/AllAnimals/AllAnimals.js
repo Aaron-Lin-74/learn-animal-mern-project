@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import AnimalTypeSection from './AnimalTypeSection/AnimalTypeSection'
 import useUtils from '../../../hooks/useUtils'
 
-const AllAnimals = () => {
+function AllAnimals() {
   const { scrollTop } = useUtils()
   useEffect(() => {
     scrollTop()

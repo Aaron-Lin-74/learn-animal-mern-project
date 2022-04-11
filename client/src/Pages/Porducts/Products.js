@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import useUtils from '../../hooks/useUtils'
 import ProductSection from './ProductSection/ProductSection'
 
-const Products = () => {
+function Products() {
   const { scrollTop } = useUtils()
   useEffect(() => {
     scrollTop()

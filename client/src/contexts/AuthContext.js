@@ -53,7 +53,7 @@ export function AuthProvider({ children }) {
     }
   }
 
-  async function logout(user) {
+  async function logout() {
     setCurrentUser(null)
     localStorage.removeItem('accessToken')
 
@@ -105,6 +105,7 @@ export function AuthProvider({ children }) {
 
   return (
     <AuthContext.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         currentUser,
         signUp,

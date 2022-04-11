@@ -4,7 +4,7 @@ import './Footer.css'
 import { BsFacebook, BsInstagram, BsTwitter, BsYoutube } from 'react-icons/bs'
 import { GiTigerHead } from 'react-icons/gi'
 
-const Footer = () => {
+function Footer() {
   return (
     <footer className='footer-container'>
       <section className='footer-links'>

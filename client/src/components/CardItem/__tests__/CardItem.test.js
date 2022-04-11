@@ -1,9 +1,8 @@
-
+import React from 'react'
 import { screen, render, fireEvent } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import CardItem from '../CardItem'
 import { BrowserRouter } from 'react-router-dom'
-
+import CardItem from '../CardItem'
 
 const mockProps = {
   class: 'animal',
@@ -11,15 +10,13 @@ const mockProps = {
   label: 'Mock Type',
   src: 'http://mock.image.jpg',
   path: '/animal/mockID',
-
 }
 
-const MockCardItem = () => {
+function MockCardItem() {
   return (
     <BrowserRouter>
       <CardItem {...mockProps} />
     </BrowserRouter>
-
   )
 }
 describe('CardItem component', () => {

@@ -1,9 +1,10 @@
+import React from 'react'
 import { screen, render } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Footer from '../Footer'
 import { BrowserRouter } from 'react-router-dom'
+import Footer from '../Footer'
 
-const MockFooter = () => {
+function MockFooter() {
   return (
     <BrowserRouter>
       <Footer />

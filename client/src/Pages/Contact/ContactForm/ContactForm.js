@@ -5,7 +5,7 @@ import { GrSend } from 'react-icons/gr'
 import Button from '../../../components/Button/Button'
 import image from '../../../backgroundImages/default-profile.jpg'
 
-const ContactForm = () => {
+function ContactForm() {
   const navigate = useNavigate()
 
   // Use uncontrolled form input for simplicity
@@ -13,6 +13,10 @@ const ContactForm = () => {
   const emailRef = useRef()
   const messageRef = useRef()
   const [error, setError] = useState('')
+  function showError(message) {
+    setError(message)
+    setTimeout(() => setError(''), 3000)
+  }
 
   // Aviod multi clicks of the send button after first submission
   const [loading, setLoading] = useState(false)
@@ -37,11 +41,10 @@ const ContactForm = () => {
       .then((response) => {
         if (response.ok) {
           return response.json()
-        } else {
-          throw new Error('Something went wrong, please try later again.')
         }
+        throw new Error('Something went wrong, please try later again.')
       })
-      .then((data) => {
+      .then(() => {
         navigate('/thank-you/contact')
       })
       .catch((err) => {
@@ -50,16 +53,12 @@ const ContactForm = () => {
       })
   }
 
-  function showError(message) {
-    setError(message)
-    setTimeout(() => setError(''), 3000)
-  }
   return (
     <div className='contact-container'>
       {error && <div className='contact-error'>{error}</div>}
       <div className='form-container'>
         <form className='contact-form' onSubmit={submitContactForm}>
-          <h4>We'd love to hear from you!</h4>
+          <h4>We&apos;d love to hear from you!</h4>
           <input
             type='text'
             ref={nameRef}
@@ -81,7 +80,7 @@ const ContactForm = () => {
             required
           />
           <div className='btn-wrap'>
-            <Button disabled={loading} type='submit' buttonStyle='btn--submit'>
+            <Button disabled={loading} type='submit' buttonstyle='btn--submit'>
               Send <GrSend />
             </Button>
           </div>

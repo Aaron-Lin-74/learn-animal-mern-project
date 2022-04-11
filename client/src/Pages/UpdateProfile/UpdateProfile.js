@@ -1,9 +1,9 @@
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import useUtils from '../../hooks/useUtils'
 import UpdateProfileForm from './UpdateProfileForm/UpdateProfileForm'
 import './UpdateProfileForm/UpdateProfileForm.css'
 
-const UpdateProfile = () => {
+function UpdateProfile() {
   const { scrollTop } = useUtils()
   useEffect(() => {
     scrollTop()

@@ -7,7 +7,7 @@ import Reviews from './Reviews/Reviews'
 import Subscription from './Subscription/Subscription'
 import '../../App.css'
 
-const Home = () => {
+function Home() {
   const { scrollTop } = useUtils()
   useEffect(() => {
     scrollTop()

@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react'
-import { Outlet } from 'react-router-dom'
-import { useParams } from 'react-router-dom'
+import { Outlet, useParams } from 'react-router-dom'
+
 import { useDispatch } from 'react-redux'
 import { setSearchTerm } from '../../features/animal/animalSlice'
-const Animals = () => {
+
+function Animals() {
   const dispatch = useDispatch()
   const { animalType } = useParams()
 
