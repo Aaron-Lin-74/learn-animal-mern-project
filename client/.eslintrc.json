@@ -29,14 +29,15 @@
       "error",
       { "props": true, "ignorePropertyModificationsFor": ["state"] }
     ],
+    "no-underscore-dangle": "off",
+    "react/destructuring-assignment": "off",
     "prettier/prettier": [
       "warn",
       {
         "endOfLine": "auto",
         "singleQuote": true,
         "jsxSingleQuote": true,
-        "semi": false,
-        "printWidth": 100
+        "semi": false
       }
     ]
   },
