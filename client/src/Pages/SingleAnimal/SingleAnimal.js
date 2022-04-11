@@ -1,14 +1,14 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import Loading from '../../components/Loading/Loading'
-import Button from '../../components/Button/Button'
 import { FcSpeaker } from 'react-icons/fc'
 import { BiArrowBack } from 'react-icons/bi'
+import { useSelector } from 'react-redux'
+import Loading from '../../components/Loading/Loading'
+import Button from '../../components/Button/Button'
 import useUtils from '../../hooks/useUtils'
 import { selectAnimalById } from '../../features/animal/animalSlice'
-import { useSelector } from 'react-redux'
 
-const SingleAnimal = () => {
+function SingleAnimal() {
   const { id } = useParams()
   const { redirect } = useUtils()
   const animal = useSelector((state) => selectAnimalById(state, id))
@@ -22,8 +22,8 @@ const SingleAnimal = () => {
   }
 
   // Pronounce the name of the animal
-  const speak = (name) => {
-    let utterance = new SpeechSynthesisUtterance(name)
+  const speak = (text) => {
+    const utterance = new SpeechSynthesisUtterance(text)
     utterance.rate = 0.75
     speechSynthesis.speak(utterance)
   }
@@ -33,7 +33,7 @@ const SingleAnimal = () => {
       <div className='animal-section-header'>
         <Button
           path={`/animals/${animal.type}`}
-          buttonStyle='btn--circle'
+          buttonstyle='btn--circle'
           aria-label='go back'
           title='go back'
         >
@@ -42,7 +42,7 @@ const SingleAnimal = () => {
         <h2>{name}</h2>
         <Button
           onClick={() => speak(name)}
-          buttonStyle='btn--circle'
+          buttonstyle='btn--circle'
           aria-label='pronounce the name'
           title='pronounce the name'
         >
@@ -51,7 +51,7 @@ const SingleAnimal = () => {
       </div>
       <div className='animal-container'>
         {loading && <Loading />}
-        <img src={imageUrl} alt={name} onLoad={handleOnLoaded}></img>
+        <img src={imageUrl} alt={name} onLoad={handleOnLoaded} />
         <div className='animal-info-container'>
           <p>
             <span className='animal-data-title'>name :</span>
@@ -80,7 +80,7 @@ const SingleAnimal = () => {
         </div>
         <article className='animal-desc'>
           <p>{desc}</p>
-          <Button buttonStyle='btn--submit' onClick={() => redirect(link)}>
+          <Button buttonstyle='btn--submit' onClick={() => redirect(link)}>
             Learn more
           </Button>
         </article>

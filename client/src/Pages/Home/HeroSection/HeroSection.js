@@ -1,10 +1,10 @@
 import React, { useRef, useState } from 'react'
-import Button from '../../../components/Button/Button'
 import { FaPlayCircle, FaPauseCircle } from 'react-icons/fa'
+import Button from '../../../components/Button/Button'
 import './HeroSection.css'
 import useUtils from '../../../hooks/useUtils'
 
-const HeroSection = () => {
+function HeroSection() {
   const videoRef = useRef()
   const [isPlay, setIsPlay] = useState(true)
   const { redirect } = useUtils()
@@ -32,9 +32,10 @@ const HeroSection = () => {
       </video>
       <div className='toggle-hero-video'>
         <Button
-          buttonStyle='btn--outline'
-          buttonSize='btn--medium'
+          buttonstyle='btn--outline'
+          buttonsize='btn--medium'
           onClick={pausePlayVideo}
+          title={isPlay ? 'pause video' : 'play video'}
         >
           {isPlay ? <FaPauseCircle /> : <FaPlayCircle />}
         </Button>
@@ -43,16 +44,16 @@ const HeroSection = () => {
       <p>What are you waiting for?</p>
       <div className='hero-btns'>
         <Button
-          buttonStyle='btn--outline'
-          buttonSize='btn--large'
+          buttonstyle='btn--outline'
+          buttonsize='btn--large'
           path='/sign-up'
         >
           GET STARTED
         </Button>
 
         <Button
-          buttonStyle='btn--primary'
-          buttonSize='btn--large'
+          buttonstyle='btn--primary'
+          buttonsize='btn--large'
           onClick={() =>
             redirect('https://www.youtube.com/watch?v=MhhAox6Zei8')
           }

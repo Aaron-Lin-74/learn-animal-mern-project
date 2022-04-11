@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import Button from '../../../components/Button/Button'
 import './Subscription.css'
 
-const Subscription = () => {
+function Subscription() {
   const navigate = useNavigate()
   const [email, setEmail] = useState('')
   const [error, setError] = useState('')
@@ -52,8 +52,8 @@ const Subscription = () => {
             required
           />
           <Button
-            buttonStyle='btn--outline'
-            buttonSize='btn--medium'
+            buttonstyle='btn--outline'
+            buttonsize='btn--medium'
             type='submit'
           >
             Join Now
