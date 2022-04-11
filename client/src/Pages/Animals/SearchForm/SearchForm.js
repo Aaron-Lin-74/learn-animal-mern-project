@@ -8,7 +8,7 @@ import {
   setSearchTerm,
 } from '../../../features/animal/animalSlice'
 
-const SearchForm = () => {
+function SearchForm() {
   const dispatch = useDispatch()
   const searchTerm = useSelector(selectSearchTerm)
 

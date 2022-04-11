@@ -3,7 +3,7 @@ import useUtils from '../../hooks/useUtils'
 import LoginForm from './LoginForm/LoginForm'
 import './LoginForm/LoginForm.scss'
 
-const Login = () => {
+function Login() {
   const { scrollTop } = useUtils()
   useEffect(() => {
     scrollTop()

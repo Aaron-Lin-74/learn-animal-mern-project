@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import useUtils from '../../hooks/useUtils'
 import ContactForm from './ContactForm/ContactForm'
 
-const Contact = () => {
+function Contact() {
   const { scrollTop } = useUtils()
   useEffect(() => {
     scrollTop()

@@ -9,7 +9,7 @@ import {
   selectSubmenuLocation,
 } from '../../../features/menu/menuSlice'
 
-const Submenu = (props) => {
+function Submenu(props) {
   const { largeScreenMode, closeMobileMenu } = props
   const dispatch = useDispatch()
   const isSubmenuOpen = useSelector(selectIsSubmenuOpen)

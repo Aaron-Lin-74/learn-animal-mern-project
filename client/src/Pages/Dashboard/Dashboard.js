@@ -3,7 +3,7 @@ import useUtils from '../../hooks/useUtils'
 import { useAuth } from '../../contexts/AuthContext'
 import Profile from './Profile/Profile'
 
-const Dashboard = () => {
+function Dashboard() {
   const { currentUser } = useAuth()
   const { scrollTop } = useUtils()
   useEffect(() => {
