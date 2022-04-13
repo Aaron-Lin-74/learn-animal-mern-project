@@ -29,7 +29,6 @@
   "bugs": {
     "url": "https://github.com/Aaron-Lin-74/learn-animal-mern-project/issues"
   },
-  "homepage": "https://github.com/Aaron-Lin-74/learn-animal-mern-project#readme",
   "license": "MIT",
   "devDependencies": {
     "cz-conventional-changelog": "^3.3.0",
