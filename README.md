@@ -14,6 +14,7 @@ http://learnanimalmern-env.eba-mn3hxtuv.ap-southeast-2.elasticbeanstalk.com
 - Used Redux and Redux Tookit to manage the global state of the application.
 - We created a custom hook useFetch to fetch the data from the server via REST API using Axios, and a custom hook for utility functions.
 - We used CSS to style most of the components, and start using SASS for the new components.
+- Set up Eslint with Airbnb Style Guide.
 
 ## Back-end
 
