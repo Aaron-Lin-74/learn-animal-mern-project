@@ -18,6 +18,7 @@ function Reviews() {
   // Handle the boundary condition for reviews index, set to loop
   const checkNumber = useCallback(
     (num) => {
+      if (!reviews) return -1
       const lastIndex = reviews.length - 1
       if (num < 0) {
         return lastIndex
