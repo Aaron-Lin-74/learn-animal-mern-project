@@ -1,5 +1,6 @@
 import './App.css'
 import React, { useState, useEffect } from 'react'
+import { ErrorBoundary } from 'react-error-boundary'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { ImArrowUp } from 'react-icons/im'
 import Navbar from './components/Navbar/Navbar'
@@ -54,58 +55,69 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <Navbar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/products' element={<Products />} />
-          <Route path='/sign-up' element={<SignUp />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/animals' element={<Animals />}>
-            <Route index element={<AllAnimals />} />
+        <ErrorBoundary FallbackComponent={Error}>
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/products' element={<Products />} />
+            <Route path='/sign-up' element={<SignUp />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/animals' element={<Animals />}>
+              <Route index element={<AllAnimals />} />
+              <Route
+                path=':animalType'
+                element={
+                  <>
+                    <SearchForm />
+                    <AnimalList />
+                  </>
+                }
+              />
+            </Route>
+            <Route path='/animal/:id' element={<SingleAnimal />} />
             <Route
-              path=':animalType'
+              path='/dashboard'
               element={
-                <>
-                  <SearchForm />
-                  <AnimalList />
-                </>
+                <RequireAuth>
+                  <Dashboard />
+                </RequireAuth>
               }
             />
-          </Route>
-          <Route path='/animal/:id' element={<SingleAnimal />} />
-          <Route
-            path='/dashboard'
-            element={
-              <RequireAuth>
-                <Dashboard />
-              </RequireAuth>
-            }
-          />
-          <Route
-            path='/update-profile'
-            element={
-              <RequireAuth>
-                <UpdateProfile />
-              </RequireAuth>
-            }
-          />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/faq' element={<FAQ />} />
-          <Route path='/terms-of-use' element={<TermsOfUse />} />
-          <Route path='/thank-you/:type' element={<ThankYou />} />
-          <Route path='*' element={<Error />} />
-        </Routes>
-        <Button
-          buttonstyle='btn--scrollUp'
-          onClick={scrollTop}
-          display={display}
-          aria-label='back to top'
-          title='back to top'
-        >
-          <ImArrowUp />
-        </Button>
-        <Footer />
+            <Route
+              path='/update-profile'
+              element={
+                <RequireAuth>
+                  <UpdateProfile />
+                </RequireAuth>
+              }
+            />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/faq' element={<FAQ />} />
+            <Route path='/terms-of-use' element={<TermsOfUse />} />
+            <Route path='/thank-you/:type' element={<ThankYou />} />
+            <Route
+              path='*'
+              element={
+                <Error
+                  header='404'
+                  content="Sorry, we can't find that page. Don't worry through,
+        everything is still awesome."
+                />
+              }
+            />
+          </Routes>
+          <Button
+            buttonstyle='btn--scrollUp'
+            onClick={scrollTop}
+            display={display}
+            aria-label='back to top'
+            title='back to top'
+          >
+            <ImArrowUp />
+          </Button>
+          <Footer />
+        </ErrorBoundary>
       </AuthProvider>
     </Router>
   )
