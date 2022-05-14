@@ -1,0 +1,17 @@
+org: aaronlin74
+app: learn-animal-api-project
+service: learn-animal-api
+frameworkVersion: '3'
+useDotenv: true
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  region: ap-southeast-2
+  stage: production # use your specified stage
+
+functions:
+  api:
+    handler: server.handler
+    events:
+      - httpApi: '*'
