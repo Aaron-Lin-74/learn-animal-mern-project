@@ -2,14 +2,14 @@ import React, { useState, useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const AuthContext = React.createContext()
-
+const BASE_URL = 'https://fzbvp5o7wd.execute-api.ap-southeast-2.amazonaws.com'
 export function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(null)
   const navigate = useNavigate()
 
   async function signUp(user) {
     try {
-      const response = await fetch(`/api/users`, {
+      const response = await fetch(`${BASE_URL}/api/users`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +33,7 @@ export function AuthProvider({ children }) {
 
   async function login(user) {
     try {
-      const response = await fetch(`/api/auth`, {
+      const response = await fetch(`${BASE_URL}/api/auth`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,7 +63,7 @@ export function AuthProvider({ children }) {
 
   async function updateUserProfile(user) {
     try {
-      const response = await fetch(`/api/users`, {
+      const response = await fetch(`${BASE_URL}/api/users`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ export function AuthProvider({ children }) {
 
   async function deleteUser() {
     try {
-      const response = await fetch(`/api/users`, {
+      const response = await fetch(`${BASE_URL}/api/users`, {
         method: 'DELETE',
         headers: {
           Authorization: `Bearer ${localStorage.getItem('accessToken')}`,

@@ -28,7 +28,6 @@ const UserSchema = new mongoose.Schema(
     password: {
       type: String,
       required: [true, "Password can't be blank"],
-      maxlength: [20, 'A password should be less than 20 characters'],
     },
   },
   { timestamps: true }

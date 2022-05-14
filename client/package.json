@@ -36,7 +36,6 @@
     "lint": "eslint ./src",
     "lint:fix": "npm run lint -- --fix"
   },
-  "proxy": "http://localhost:5000",
   "browserslist": {
     "production": [
       ">0.2%",

@@ -1,6 +1,8 @@
 import { useState, useEffect, useRef } from 'react'
-
 import axios from 'axios'
+
+axios.defaults.baseURL =
+  'https://fzbvp5o7wd.execute-api.ap-southeast-2.amazonaws.com'
 
 /** Custom hook that fetches the data (like reviews and animals) from server
  *  If the withToken is true, a token is added in the headers
