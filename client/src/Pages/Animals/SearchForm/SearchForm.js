@@ -7,7 +7,6 @@ import { setSearchTerm } from '../../../features/animal/animalSlice'
 
 function SearchForm() {
   const dispatch = useDispatch()
-  // const searchTerm = useSelector(selectSearchTerm)
 
   // Change the animal type from plural to single
   const { animalType } = useParams()
