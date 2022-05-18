@@ -45,8 +45,19 @@ function App() {
 
   // Add onscroll event listener determining to show the button or not
   useEffect(() => {
+    // Throttle function
+    const throttle = (callback, interval) => {
+      let startTime = 0
+      return (...args) => {
+        const endTime = new Date()
+        if (endTime - startTime > interval) {
+          callback.apply(this, args)
+          startTime = endTime
+        }
+      }
+    }
     scrollTop()
-    window.addEventListener('scroll', showScrollBtn)
+    window.addEventListener('scroll', throttle(showScrollBtn, 500))
 
     // Always use a cleanup function to avoid the memery leak and overwritten issue
     return () => window.removeEventListener('scroll', showScrollBtn)
