@@ -2,15 +2,11 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import { FcSearch } from 'react-icons/fc'
 import './SearchForm.scss'
-import { useDispatch, useSelector } from 'react-redux'
-import {
-  selectSearchTerm,
-  setSearchTerm,
-} from '../../../features/animal/animalSlice'
+import { useDispatch } from 'react-redux'
+import { setSearchTerm } from '../../../features/animal/animalSlice'
 
 function SearchForm() {
   const dispatch = useDispatch()
-  const searchTerm = useSelector(selectSearchTerm)
 
   // Change the animal type from plural to single
   const { animalType } = useParams()
@@ -18,6 +14,19 @@ function SearchForm() {
   const handleSubmit = (e) => {
     e.preventDefault()
   }
+  const debounce = (func, delay = 300) => {
+    let timeoutId
+    return (...args) => {
+      clearTimeout(timeoutId)
+      timeoutId = setTimeout(() => {
+        func.apply(this, args)
+      }, delay)
+    }
+  }
+  const handleSearchInput = (e) => {
+    dispatch(setSearchTerm(e.target.value))
+  }
+  const debouncedHandleSearchInput = debounce(handleSearchInput, 300)
   return (
     <section className='search-section'>
       <form className='search-form' onSubmit={handleSubmit}>
@@ -30,8 +39,7 @@ function SearchForm() {
             type='search'
             name='name'
             id='name'
-            value={searchTerm}
-            onChange={(e) => dispatch(setSearchTerm(e.target.value))}
+            onChange={debouncedHandleSearchInput}
           />
         </div>
       </form>
