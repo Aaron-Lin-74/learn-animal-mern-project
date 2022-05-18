@@ -33,7 +33,6 @@ function App() {
 
   // When the user scrolls down 20px from the top of the document, show the button
   const showScrollBtn = () => {
-    console.log('scroll')
     if (
       document.body.scrollTop > 20 ||
       document.documentElement.scrollTop > 20
